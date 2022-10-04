@@ -1,24 +1,19 @@
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { plusNumber } from './store/data';
+import { useMemo, useState } from 'react';
+import ImageUpload from './components/ImageUpload';
+import MarkdownEditor from './components/MarkdownEditor';
+import Result from './components/Result';
+import markdownContext from './hooks/contexts/markdownContext';
 
 const App = () => {
-  const count = useAppSelector((state) => state.data.number);
-  console.log(count);
-  const dispatch = useAppDispatch();
-
-  const onIncrease = () => {
-    dispatch(plusNumber(count));
-  };
+  const [markdownText, setMarkdownText] = useState('');
+  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
 
   return (
-    <div>
-      <h1>{count}</h1>
-      <div>
-        <button onClick={onIncrease} type='button'>
-          +
-        </button>
-      </div>
-    </div>
+    <markdownContext.Provider value={contextValue}>
+      <ImageUpload />
+      <MarkdownEditor />
+      <Result />
+    </markdownContext.Provider>
   );
 };
 
