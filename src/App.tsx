@@ -1,19 +1,18 @@
-import { useMemo, useState } from 'react';
-import ImageUpload from './components/ImageUpload';
-import MarkdownEditor from './components/MarkdownEditor';
-import Result from './components/Result';
-import markdownContext from './hooks/contexts/markdownContext';
+import { Article, Home, Layout, Profile, Write } from '@pages';
+import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
-  const [markdownText, setMarkdownText] = useState('');
-  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
-
   return (
-    <markdownContext.Provider value={contextValue}>
-      <ImageUpload />
-      <MarkdownEditor />
-      <Result />
-    </markdownContext.Provider>
+    <Routes>
+      <Route>
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='article' element={<Article />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='write' element={<Write />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 };
 
