@@ -1,3 +1,4 @@
+import ImageDnDWrapper from '@components/ImageDnDWrapper';
 import ImageUpload from '@components/ImageUpload';
 import MarkdownEditor from '@components/MarkdownEditor';
 import Result from '@components/Result';
@@ -11,7 +12,9 @@ const Write = () => {
   return (
     <MarkdownContext.Provider value={contextValue}>
       <ImageUpload />
-      <MarkdownEditor />
+      <ImageDnDWrapper>
+        <MarkdownEditor />
+      </ImageDnDWrapper>
       <Result />
     </MarkdownContext.Provider>
   );
