@@ -1,3 +1,4 @@
+import styled from 'styled-components';
 import useMarkdown from '../hooks/contexts/useMarkdown';
 
 const MarkdownEditor = () => {
@@ -7,7 +8,12 @@ const MarkdownEditor = () => {
     setMarkdownText(e.currentTarget.value);
   };
 
-  return <textarea onChange={handleEditorChage} value={markdownText} name='temp' id='temp' cols={30} rows={10} />;
+  return <Textarea onChange={handleEditorChage} value={markdownText} cols={30} rows={30} placeholder='Description' />;
 };
+
+const Textarea = styled.textarea`
+  width: 100%;
+  height: 100%;
+`;
 
 export default MarkdownEditor;

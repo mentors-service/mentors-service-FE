@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import useMarkdown from '@hooks/contexts/useMarkdown';
+import styled from 'styled-components';
 
 interface ImageDnDWrapperProps {
   children: React.ReactNode;
@@ -27,14 +28,18 @@ const ImageDnDWrapper = ({ children }: ImageDnDWrapperProps) => {
     const imgMarkdownURL = `![](${URL.createObjectURL(e.dataTransfer.files[0])})`;
 
     setMarkdownText((prev) => prev + imgMarkdownURL);
-    setImageUpload((prev) => !prev);
+    setImageUpload(false);
   };
 
   return (
-    <div onDragEnter={handleImageDragEnter} onDragLeave={handleImageDragLeave} onDrop={handleImageDrop}>
+    <Wrapper onDragEnter={handleImageDragEnter} onDragLeave={handleImageDragLeave} onDrop={handleImageDrop}>
       {children}
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  width: 100%;
+`;
 
 export default ImageDnDWrapper;
