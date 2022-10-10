@@ -4,7 +4,7 @@ import Result from '@components/Result';
 import MarkdownContext from '@hooks/contexts/markdownContext';
 import { useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createArticle } from 'api/CrudAPI';
+import { createArticle } from 'api/crudAPI';
 
 const Write = () => {
   const queryClient = useQueryClient();
@@ -13,7 +13,6 @@ const Write = () => {
 
   const createMutaion = useMutation(createArticle, {
     onSuccess: () => {
-      // update 후에 get 함수를 재실행시켜줌 (새로고침 안 해도 됨)
       queryClient.invalidateQueries(['articles']);
     },
     onError: (error) => {
