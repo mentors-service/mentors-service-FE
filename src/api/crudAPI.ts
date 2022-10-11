@@ -1,8 +1,12 @@
 import { apiInstance } from './setting';
 
-export const createArticle = async () => {
+interface IProps {
+  data: string;
+}
+
+export const createArticle = async (data: any) => {
   try {
-    return await apiInstance.post('/');
+    return await apiInstance.post('/', data);
   } catch (error) {
     console.log(error);
     return error;
@@ -27,7 +31,7 @@ export const updateArticle = async () => {
   }
 };
 
-export const deleteArticle = async (postKey: string) => {
+export const deleteArticle = async (postKey: number) => {
   try {
     return await apiInstance.delete(`/${postKey}`);
   } catch (error) {

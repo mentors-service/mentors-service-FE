@@ -1,5 +1,5 @@
+import { readArticle } from '@api/crudAPI';
 import { useQuery } from '@tanstack/react-query';
-import { readArticle } from 'api/crudAPI';
 
 const useGetArticles = () => {
   const { data } = useQuery(['articles'], readArticle, {
