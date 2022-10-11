@@ -1,6 +1,6 @@
 import useGetArticles from '@hooks/useGetArticles';
 import styled from 'styled-components';
-import { deleteArticle, updateArticle } from '@api/crudAPI';
+import { deleteArticle, updateArticle } from '@api/article';
 import { useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 

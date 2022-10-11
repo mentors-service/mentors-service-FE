@@ -4,7 +4,7 @@ import Result from '@components/Result';
 import MarkdownContext from '@hooks/contexts/markdownContext';
 import { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { createArticle } from '@api/crudAPI';
+import { createArticle } from '@api/article';
 
 const Write = () => {
   const [markdownText, setMarkdownText] = useState('');
