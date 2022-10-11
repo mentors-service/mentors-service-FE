@@ -1,6 +1,7 @@
 import ImageUpload from '@components/ImageUpload';
 import MarkdownEditor from '@components/MarkdownEditor';
 import Result from '@components/Result';
+import ImageDnDWrapper from '@components/ImageDnDWrapper';
 import MarkdownContext from '@hooks/contexts/markdownContext';
 import { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
@@ -24,7 +25,9 @@ const Write = () => {
     <div>
       <MarkdownContext.Provider value={contextValue}>
         <ImageUpload />
-        <MarkdownEditor />
+        <ImageDnDWrapper>
+          <MarkdownEditor />
+        </ImageDnDWrapper>
         <Result />
       </MarkdownContext.Provider>
       <button onClick={onClickAddButton} type='submit'>
