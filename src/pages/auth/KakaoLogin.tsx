@@ -1,9 +1,11 @@
+import { postAuthCode } from '@api/auth';
+import { useMutation } from '@tanstack/react-query';
 import { useSearchParams } from 'react-router-dom';
 
 const KakaoLogin = () => {
   const [searchParams] = useSearchParams();
-
-  console.log(searchParams.get('code'));
+  const authCode = searchParams.get('code');
+  const authCodeMutation = useMutation((code: string) => postAuthCode(code));
 
   return (
     <div>
