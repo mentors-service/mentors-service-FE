@@ -1,4 +1,4 @@
-import { Article, Home, Layout, Profile, Write } from '@pages';
+import { Article, Home, KakaoLogin, Layout, Profile, Write } from '@pages';
 import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -11,6 +11,8 @@ const App = () => {
           <Route path='profile' element={<Profile />} />
           <Route path='write' element={<Write />} />
         </Route>
+
+        <Route path='oauth/kakao/callback' element={<KakaoLogin />} />
       </Route>
     </Routes>
   );

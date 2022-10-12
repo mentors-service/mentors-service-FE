@@ -11,6 +11,7 @@
       "@profile/*": ["./pages/profile/*"],
       "@write/*": ["./pages/write/*"],
       "@layout/*": ["./pages/layout/*"],
+      "@auth/*": ["./pages/auth/*"],
       "@pages": ["./pages/index.ts"]
     }
   }
