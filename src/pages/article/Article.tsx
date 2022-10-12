@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Article = () => {
   const articles = useGetArticles();
-  const postkyey = 15;
+  const POST_KEY = 15;
   const navigate = useNavigate();
 
   const deleteMutation = useMutation(deleteArticle, {
@@ -17,7 +17,7 @@ const Article = () => {
 
   const onClickDeleteButton = () => {
     if (window.confirm('삭제 하시겠습니까?')) {
-      deleteMutation.mutate(postkyey);
+      deleteMutation.mutate(POST_KEY);
       navigate('/');
     }
   };
@@ -34,13 +34,12 @@ const Article = () => {
 
   return (
     <div>
-      {articles &&
-        articles.map((article: any) => (
-          <ArticleBox key={article.id}>
-            <Title>{article.title}</Title>
-            <Content>{article.content}</Content>
-          </ArticleBox>
-        ))}
+      {articles.map((article: any) => (
+        <ArticleBox key={article.id}>
+          <Title>{article.title}</Title>
+          <Content>{article.content}</Content>
+        </ArticleBox>
+      ))}
       <button type='button' onClick={onClickDeleteButton}>
         삭제하기
       </button>
