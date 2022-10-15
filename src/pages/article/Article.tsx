@@ -10,9 +10,7 @@ const Article = () => {
   const navigate = useNavigate();
 
   const deleteMutation = useMutation(deleteArticle, {
-    onError: (error) => {
-      console.log(error);
-    },
+    onError: (error) => {},
   });
 
   const onClickDeleteButton = () => {
@@ -23,9 +21,7 @@ const Article = () => {
   };
 
   const UpdateMutation = useMutation(updateArticle, {
-    onError: (error) => {
-      console.log(error);
-    },
+    onError: (error) => {},
   });
 
   const onClickUpdateButton = () => {
