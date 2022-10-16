@@ -1,61 +1,52 @@
-import useGetArticles from '@hooks/useGetArticles';
-import styled from 'styled-components';
-import { deleteArticle, updateArticle } from '@api/article';
-import { useMutation } from '@tanstack/react-query';
-import { useNavigate } from 'react-router-dom';
+import * as S from './Article.style';
 
 const Article = () => {
-  const articles = useGetArticles();
-  const POST_KEY = 15;
-  const navigate = useNavigate();
-
-  const deleteMutation = useMutation(deleteArticle, {
-    onError: (error) => {},
-  });
-
-  const onClickDeleteButton = () => {
-    if (window.confirm('삭제 하시겠습니까?')) {
-      deleteMutation.mutate(POST_KEY);
-      navigate('/');
-    }
-  };
-
-  const UpdateMutation = useMutation(updateArticle, {
-    onError: (error) => {},
-  });
-
-  const onClickUpdateButton = () => {
-    UpdateMutation.mutate();
-  };
-
   return (
-    <div>
-      {articles.map((article: any) => (
-        <ArticleBox key={article.id}>
-          <Title>{article.title}</Title>
-          <Content>{article.content}</Content>
-        </ArticleBox>
-      ))}
-      <button type='button' onClick={onClickDeleteButton}>
-        삭제하기
-      </button>
-      <button type='button' onClick={onClickUpdateButton}>
-        수정하기
-      </button>
-    </div>
+    <>
+      <S.Profile>
+        <S.ProfileDescription>
+          <img
+            src='/img/ProfileImg.png'
+            alt=''
+            style={{
+              width: '25px',
+              height: '25px',
+            }}
+          />
+          <S.Name>이무성</S.Name>
+          <S.ActivityTime></S.ActivityTime>
+        </S.ProfileDescription>
+        <S.ProgressBtn>In Progress</S.ProgressBtn>
+      </S.Profile>
+      <S.ArticleData>
+        <S.Title>Lorem Ipsum is simply dummy text</S.Title>
+        <S.Place>
+          <label>Place</label>
+          <span>Seoul</span>
+        </S.Place>
+        <S.Date>
+          <label>Date</label>
+          <span>2022.10.01 ~ 2022.10.01</span>
+        </S.Date>
+        <S.Tag>
+          <S.TagBtn>Java</S.TagBtn>
+          <S.TagBtn>React</S.TagBtn>
+          <S.TagBtn>Github</S.TagBtn>
+        </S.Tag>
+        <S.ArticleContent>
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
+          make a type specimen book.
+        </S.ArticleContent>
+        <S.PersonnelStatus>
+          <img src='/img/Person.png' alt='' />
+          1/5
+        </S.PersonnelStatus>
+
+        <S.Textarea></S.Textarea>
+      </S.ArticleData>
+    </>
   );
 };
-
-const ArticleBox = styled.article`
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid;
-  padding: 10px;
-  word-break: keep-all;
-  margin-right: 20px;
-  cursor: pointer;
-`;
-const Title = styled.h2``;
-const Content = styled.p``;
 
 export default Article;
