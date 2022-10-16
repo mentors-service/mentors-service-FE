@@ -6,16 +6,19 @@ const Profile = () => {
       <S.ProfileWrapper>
         <S.Profile>
           <img src='/img/ProfileImg.png' alt='' />
-          <S.ProfileDescription>
+
+          <S.ProfileInfo>
             <S.Name>이무성</S.Name>
             <S.Description>저는 5년차 개발자입니다. 주로 react 개발을 위주로 하는 중 입니다.</S.Description>
-          </S.ProfileDescription>
+          </S.ProfileInfo>
         </S.Profile>
+
         <S.MentorSkills>
           <S.Mentor>멘토</S.Mentor>
           <S.Skills>Skills</S.Skills>
         </S.MentorSkills>
       </S.ProfileWrapper>
+
       <S.ProfileBtn>All activity</S.ProfileBtn>
       <S.ProfileBtn>Article</S.ProfileBtn>
       <S.ProfileBtn>Comment</S.ProfileBtn>

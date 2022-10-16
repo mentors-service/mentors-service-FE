@@ -9,19 +9,14 @@ export const Profile = styled.div`
   align-items: center;
 `;
 
-export const ProfileDescription = styled.div`
-  margin-left: 58px;
+export const ProfileInfo = styled.div`
   margin-top: 25px;
+  margin-left: 58px;
 `;
 
 export const Name = styled.div`
   margin-bottom: 34px;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  color: #000000;
+  font: ${(props) => props.theme.font};
 `;
 
 export const Description = styled(Name)`
@@ -40,12 +35,13 @@ export const Mentor = styled(Name)`
 
 export const Skills = styled(Name)``;
 
-export const ProfileBtn = styled(Name)`
-  padding: 8px 8px 0 8px;
+export const ProfileBtn = styled.button`
+  display: inline-block;
+  max-width: fit-content;
   height: 32px;
+  padding: 0px 8px 0px 8px;
+  margin: 120px 0 0 25px;
+  font: ${(props) => props.theme.font};
   background: #ebebeb;
   border-radius: 10px;
-  max-width: fit-content;
-  margin: 120px 0 0 25px;
-  display: inline-block;
 `;
