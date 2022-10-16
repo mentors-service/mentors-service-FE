@@ -21,7 +21,7 @@ const Article = () => {
       <S.ArticleData>
         <S.Title>Lorem Ipsum is simply dummy text</S.Title>
         <S.Place>
-          <label>Place</label>
+          <label>Places</label>
           <span>Seoul</span>
         </S.Place>
         <S.Date>
