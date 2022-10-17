@@ -12,9 +12,7 @@ const Write = () => {
   const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
 
   const createMutaion = useMutation(createArticle, {
-    onError: (error) => {
-      console.log(error);
-    },
+    onError: (error) => {},
   });
 
   const onClickAddButton = () => {
