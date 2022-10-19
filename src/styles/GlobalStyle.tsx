@@ -31,7 +31,9 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	line-height: 1;
+	line-height: 1;  
+	font-family: 'Inter';  
+	font-weight: 400;
 }
 ol, ul {
 	list-style: none;
