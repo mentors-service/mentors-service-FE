@@ -9,44 +9,44 @@ const Article = () => {
         <S.ProgressSpan>In Progress</S.ProgressSpan>
       </S.User>
 
-      <S.ArticleDataWrapper>
-        <S.ArticleSection>
-          <S.Title>Lorem Ipsum is simply dummy text</S.Title>
+      <S.ArticleSection>
+        <S.Title>Lorem Ipsum is simply dummy text</S.Title>
 
-          <S.Place>
-            <S.Label as='label'>Places</S.Label>
-            <S.Span>Seoul</S.Span>
-          </S.Place>
+        <S.Dl>
+          <div>
+            <S.Dt>Places</S.Dt>
+            <S.Dd>Seoul</S.Dd>
+          </div>
 
-          <S.Date>
-            <S.Label as='label'>Date</S.Label>
-            <S.Span>2022.10.01 ~ 2022.10.01</S.Span>
-          </S.Date>
+          <div>
+            <S.Dt>Date</S.Dt>
+            <S.Dd>2022.10.01 ~ 2022.10.01</S.Dd>
+          </div>
 
-          <S.Tag>
-            <S.Label as='label'>Tag</S.Label>
+          <div>
+            <S.Dt>Tag</S.Dt>
             <S.TagSpan>Java</S.TagSpan>
             <S.TagSpan>React</S.TagSpan>
             <S.TagSpan>Github</S.TagSpan>
-          </S.Tag>
-        </S.ArticleSection>
+          </div>
+        </S.Dl>
+      </S.ArticleSection>
 
-        <S.ArticleContent>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard
-          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book.
-        </S.ArticleContent>
+      <S.ArticleContent>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard
+        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+        specimen book.
+      </S.ArticleContent>
 
-        <S.PersonnelStatus>
-          <img src='/img/Person.png' alt='' />
-          1/5
-        </S.PersonnelStatus>
+      <S.PersonnelStatus>
+        <img src='/img/Person.png' alt='' />
+        1/5
+      </S.PersonnelStatus>
 
-        <S.TextareaWrapper>
-          <S.Textarea placeholder='Textarea Comment' />
-          <S.PostBtn type='submit'>Post</S.PostBtn>
-        </S.TextareaWrapper>
-      </S.ArticleDataWrapper>
+      <S.TextareaWrapper>
+        <S.Textarea placeholder='Textarea Comment' />
+        <S.PostBtn type='submit'>Post</S.PostBtn>
+      </S.TextareaWrapper>
 
       <S.Comments>
         <S.Comment>

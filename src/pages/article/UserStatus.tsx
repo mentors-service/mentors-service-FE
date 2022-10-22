@@ -1,4 +1,4 @@
-import * as S from './Article.style';
+import * as S from './UserStatus.style';
 
 const UserStatus = () => {
   return (

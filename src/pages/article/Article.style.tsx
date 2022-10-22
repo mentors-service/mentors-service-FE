@@ -1,74 +1,56 @@
 import styled from 'styled-components';
 
 export const ProfileWrapper = styled.main`
-  padding: 0 50px 0 50px;
+  padding: 0 50px;
 `;
 
 export const User = styled.section`
   display: flex;
-  margin-top: 25px;
   justify-content: space-between;
-`;
-
-export const UserStatusWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-`;
-
-export const Name = styled.span`
-  font-size: ${(props) => props.theme.fonts.$xs};
-  line-height: 16px;
-`;
-
-export const ActivityTime = styled.span`
-  font-size: ${(props) => props.theme.fonts.$xxs};
-  line-height: 13px;
-  color: #808080;
+  margin-top: 25px;
 `;
 
 export const ProgressSpan = styled.span`
-  font-size: ${(props) => props.theme.fonts.$xs};
   max-width: fit-content;
+  padding: 5px 10px 5px 10px;
+  font-size: ${(props) => props.theme.fonts.$xs};
   background: #ebebeb;
   border-radius: 10px;
-  padding: 5px 10px 5px 10px;
-`;
-
-export const ArticleDataWrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-top: 25px;
 `;
 
 export const ArticleSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 25px;
 `;
 
 export const Title = styled.h2`
-  font-weight: 700;
   font-size: ${(props) => props.theme.fonts.$xs};
+  font-weight: 700;
   line-height: 18px;
 `;
 
-export const Place = styled.div`
+export const Dl = styled.dl`
   display: flex;
-`;
-export const Date = styled.div`
-  display: flex;
-`;
-export const Tag = styled.div`
-  display: flex;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+  div {
+    display: flex;
+  }
+  div:nth-last-child(1) {
+    gap: 20px;
+  }
 `;
 
-export const Label = styled(Title)`
+export const Dt = styled.dt`
+  font-size: ${(props) => props.theme.fonts.$xs};
+  font-weight: 700;
+  line-height: 18px;
   width: 60px;
 `;
 
-export const Span = styled.span`
+export const Dd = styled.dd`
   font-size: ${(props) => props.theme.fonts.$xs};
   line-height: 16px;
 `;
@@ -76,9 +58,9 @@ export const Span = styled.span`
 export const TagSpan = styled(ProgressSpan)``;
 
 export const ArticleContent = styled.p`
+  margin: 25px 0 6px 0;
   font-size: ${(props) => props.theme.fonts.$xs};
   line-height: 16px;
-  margin: 25px 0 6px 0;
 `;
 
 export const PersonnelStatus = styled(ProgressSpan)`
@@ -87,10 +69,10 @@ export const PersonnelStatus = styled(ProgressSpan)`
   }
   display: flex;
   align-items: center;
+  padding: 10px;
+  margin-left: 192px;
   font-size: ${(props) => props.theme.fonts.$xxs};
   line-height: 15px;
-  margin-left: 192px;
-  padding: 10px;
 `;
 
 export const TextareaWrapper = styled.div`
@@ -98,30 +80,30 @@ export const TextareaWrapper = styled.div`
 `;
 
 export const Textarea = styled.textarea`
-  height: 75px;
-  margin-top: 10px;
-  padding: 8px;
-  width: 100%;
   box-sizing: border-box;
+  width: 100%;
+  height: 75px;
+  padding: 8px;
+  margin-top: 10px;
   border: 2px solid #ebebeb;
 `;
 
 export const PostBtn = styled.button`
-  font-size: ${(props) => props.theme.fonts.$xs};
-  line-height: 16px;
   position: absolute;
   top: 50px;
   right: 8px;
+  padding: 5px 10px;
+  font-size: ${(props) => props.theme.fonts.$xs};
+  line-height: 16px;
   background: #ebebeb;
   border-radius: 10px;
-  padding: 5px 10px;
 `;
 
 export const Comments = styled.section`
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  margin-top: 50px;
 `;
 
 export const Comment = styled.article``;
@@ -130,7 +112,7 @@ export const ReplyComment = styled.article`
   padding-left: 25px;
 `;
 export const CommentContent = styled.p`
+  margin-top: 10px;
   font-size: ${(props) => props.theme.fonts.$xs};
   line-height: 16px;
-  margin-top: 10px;
 `;
