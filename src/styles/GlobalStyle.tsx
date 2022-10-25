@@ -44,9 +44,14 @@ q:before, q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-spacing: 0;
 	border-collapse: collapse;
-}`;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+`;
 
 export default GlobalStyle;

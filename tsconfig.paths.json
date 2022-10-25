@@ -9,6 +9,7 @@
       "@styles/*": ["./styles/*"],
       "@home/*": ["./pages/home/*"],
       "@article/*": ["./pages/article/*"],
+      "@me/*": ["./pages/me/*"],
       "@profile/*": ["./pages/profile/*"],
       "@write/*": ["./pages/write/*"],
       "@layout/*": ["./pages/layout/*"],

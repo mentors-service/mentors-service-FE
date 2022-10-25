@@ -1,4 +1,4 @@
-import { Article, Home, KakaoLogin, Layout, Profile, Write } from '@pages';
+import { Article, Home, KakaoLogin, Layout, Me, Profile, Write } from '@pages';
 import { Route, Routes } from 'react-router-dom';
 
 const App = () => {
@@ -8,6 +8,7 @@ const App = () => {
         <Route element={<Layout />}>
           <Route path='/' element={<Home />} />
           <Route path='article' element={<Article />} />
+          <Route path='me' element={<Me />} />
           <Route path='profile' element={<Profile />} />
           <Route path='write' element={<Write />} />
         </Route>

@@ -51,13 +51,13 @@ const Article = () => {
 };
 
 const ArticleBox = styled.article`
-  margin-bottom: 12px;
-  border-radius: 10px;
-  border: 1px solid;
   padding: 10px;
-  word-break: keep-all;
   margin-right: 20px;
+  margin-bottom: 12px;
+  word-break: keep-all;
   cursor: pointer;
+  border: 1px solid;
+  border-radius: 10px;
 `;
 const Title = styled.h2``;
 const Content = styled.p``;
