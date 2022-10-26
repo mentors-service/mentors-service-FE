@@ -4,7 +4,7 @@ export const MeContainer = styled.div`
   padding: 25px 25px 0;
 `;
 
-export const Temp = styled.div`
+export const MyProfileWrapper = styled.div`
   display: flex;
   gap: 25px;
 `;
@@ -32,8 +32,8 @@ export const ImageChangeButton = styled.button`
 export const MyProfileForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
   gap: 10px;
+  justify-content: flex-end;
   width: 100%;
 `;
 
@@ -44,10 +44,16 @@ export const InputWrapper = styled.div`
 `;
 
 export const MyProfileChangeButton = styled.button`
+  width: 72px;
   height: 34px;
+  margin-left: auto;
   color: ${({ theme }) => theme.colors.$white};
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
-  margin-left: auto;
-  width: 72px;
+`;
+
+export const MyActivityWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 `;

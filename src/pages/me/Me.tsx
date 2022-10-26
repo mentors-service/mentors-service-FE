@@ -1,7 +1,6 @@
 import MeInput from './components/Input';
+import MeTab from './components/tab';
 import * as S from './Me.style';
-
-const MYACTIVITY_LIST = ['Article', 'Comment', 'Scrap'];
 
 const Me = () => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -15,7 +14,7 @@ const Me = () => {
 
   return (
     <S.MeContainer>
-      <S.Temp>
+      <S.MyProfileWrapper>
         <S.ImageWrapper>
           <S.ImageTemp />
           <S.ImageChangeButton onClick={handleClick}>이미지 변경</S.ImageChangeButton>
@@ -28,18 +27,22 @@ const Me = () => {
           </S.InputWrapper>
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>
         </S.MyProfileForm>
-      </S.Temp>
+      </S.MyProfileWrapper>
 
-      <div>
+      {/* <div>
         <span>Skills</span>
         <div>생각중...</div>
-      </div>
+      </div> */}
 
-      <ul>
-        {MYACTIVITY_LIST.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
+      <S.MyActivityWrapper>
+        <MeTab />
+
+        <ul>
+          {[1, 2, 3, 4, 5].map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </S.MyActivityWrapper>
     </S.MeContainer>
   );
 };
