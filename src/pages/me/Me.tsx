@@ -17,6 +17,7 @@ const Me = () => {
       <S.MyProfileWrapper>
         <S.ImageWrapper>
           <S.ImageTemp />
+
           <S.ImageChangeButton onClick={handleClick}>이미지 변경</S.ImageChangeButton>
         </S.ImageWrapper>
 
@@ -25,6 +26,7 @@ const Me = () => {
             <MeInput placeholder='Name' />
             <MeInput placeholder='Description' />
           </S.InputWrapper>
+
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>
         </S.MyProfileForm>
       </S.MyProfileWrapper>
@@ -37,11 +39,17 @@ const Me = () => {
       <S.MyActivityWrapper>
         <MeTab />
 
-        <ul>
+        <S.MyActivityList>
           {[1, 2, 3, 4, 5].map((item) => (
-            <li key={item}>{item}</li>
+            <S.MyActivityItem key={item}>
+              <S.MyActivityButton onClick={handleClick}>
+                <S.MyActivityTitle>게시물 제목</S.MyActivityTitle>
+                <S.MyActivityContent>내용...</S.MyActivityContent>
+                <S.MyActivityCreatedAt dateTime='2022-10-26'>2022-10-26</S.MyActivityCreatedAt>
+              </S.MyActivityButton>
+            </S.MyActivityItem>
           ))}
-        </ul>
+        </S.MyActivityList>
       </S.MyActivityWrapper>
     </S.MeContainer>
   );

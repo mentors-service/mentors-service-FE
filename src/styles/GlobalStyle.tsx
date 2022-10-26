@@ -20,6 +20,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	vertical-align: baseline;
 	border: 0;
+	color: #0D0D0D
+
 }
 input,
 button{ padding:0; overflow:visible; cursor:pointer;

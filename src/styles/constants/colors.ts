@@ -1,7 +1,7 @@
 export type ColorsTypes = typeof colors;
 
 export const colors = {
-  $primary: '#FF055C',
+  $primary: '#C6EEFD',
   $secondary: '#0BBFAD',
   $tertiary: '#FF055C',
   $primary_dark: '#93B2BD',
