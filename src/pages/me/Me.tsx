@@ -1,3 +1,4 @@
+import useAuth from '@hooks/useAuth';
 import MeInput from './components/Input';
 import MeTab from './components/tab';
 import * as S from './Me.style';
@@ -11,6 +12,8 @@ const Me = () => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log('button click');
   };
+
+  const authToken = useAuth();
 
   return (
     <S.MeContainer>
