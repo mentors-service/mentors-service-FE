@@ -27,6 +27,11 @@ export const ImageChangeButton = styled.button`
   color: ${({ theme }) => theme.colors.$white};
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+  padding: 5px 10px;
+  transition: 0.3s;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;
 
 export const MyProfileForm = styled.form`
@@ -44,12 +49,16 @@ export const InputWrapper = styled.div`
 `;
 
 export const MyProfileChangeButton = styled.button`
-  width: 72px;
+  padding: 5px 10px;
   height: 34px;
   margin-left: auto;
   color: ${({ theme }) => theme.colors.$white};
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+  transition: 0.3s;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;
 
 export const MyActivityWrapper = styled.div`

@@ -3,13 +3,13 @@ import MeTab from './components/tab';
 import * as S from './Me.style';
 
 const Me = () => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('button click');
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('submit');
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('button click');
   };
 
   return (
@@ -30,11 +30,6 @@ const Me = () => {
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>
         </S.MyProfileForm>
       </S.MyProfileWrapper>
-
-      {/* <div>
-        <span>Skills</span>
-        <div>생각중...</div>
-      </div> */}
 
       <S.MyActivityWrapper>
         <MeTab />
