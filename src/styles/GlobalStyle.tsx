@@ -20,6 +20,8 @@ time, mark, audio, video {
 	font-size: 100%;
 	vertical-align: baseline;
 	border: 0;
+	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
+	color: #0D0D0D
 }
 input,
 button{ padding:0; overflow:visible; cursor:pointer;
@@ -31,8 +33,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {  
-	font-family: 'Inter';  
-	font-weight: 400;
 	line-height: 1;
 }
 ol, ul {
