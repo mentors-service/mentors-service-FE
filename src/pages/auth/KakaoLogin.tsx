@@ -1,11 +1,19 @@
 import { postAuthCode } from '@api/auth';
 import { useMutation } from '@tanstack/react-query';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const KakaoLogin = () => {
   const [searchParams] = useSearchParams();
-  const authCode = searchParams.get('code');
-  const authCodeMutation = useMutation((code: string) => postAuthCode(code));
+  const navigate = useNavigate();
+  // const authCodeMutation = useMutation((code: string) => postAuthCode(code));
+
+  useEffect(() => {
+    const authToken = searchParams.get('token')!;
+    window.localStorage.setItem('token', authToken);
+
+    navigate('/');
+  }, [searchParams, navigate]);
 
   return (
     <div>

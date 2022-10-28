@@ -1,11 +1,9 @@
 import { GroupIcon, LogoutIcon, ProfileIcon } from '@assets/svgs';
 import { Outlet } from 'react-router-dom';
 
-const KAKAO_OAUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT}&response_type=code`;
-
 const Layout = () => {
   const handleClickLoginKakao = () => {
-    window.location.href = KAKAO_OAUTH_URL;
+    window.location.href = process.env.REACT_APP_KAKAO_OAUTH_URL!;
   };
 
   const handleTestLogin = () => {
