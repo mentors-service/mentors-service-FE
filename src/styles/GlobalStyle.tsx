@@ -17,11 +17,11 @@ time, mark, audio, video {
 	padding: 0;
 	margin: 0;
 	font: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
-	border: 0;
 	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
-	color: #0D0D0D
+	font-size: 100%;
+	color: #0d0d0d;
+	vertical-align: baseline;
+	border: 0
 }
 input,
 button{ padding:0; overflow:visible; cursor:pointer;

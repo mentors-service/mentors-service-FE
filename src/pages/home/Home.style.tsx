@@ -21,23 +21,23 @@ export const SearchInputWrapper = styled.div`
 `;
 
 export const SearchIcon = styled(Search)`
+  position: absolute;
+  top: 50%;
+  left: 10px;
   width: 24px;
   height: 24px;
-  position: absolute;
-  stroke: ${({ theme }) => theme.colors.$secondary};
   fill: ${({ theme }) => theme.colors.$secondary};
-  left: 10px;
-  top: 50%;
+  stroke: ${({ theme }) => theme.colors.$secondary};
   transform: translateY(-50%);
 `;
 
 export const SearchInput = styled.input`
-  border: 2px solid ${({ theme }) => theme.colors.$secondary};
-  border-radius: 10px;
+  box-sizing: border-box;
+  width: 100%;
   padding: 5px 10px;
   padding-left: 34px;
-  width: 100%;
-  box-sizing: border-box;
+  border: 2px solid ${({ theme }) => theme.colors.$secondary};
+  border-radius: 10px;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.$secondary};
@@ -45,32 +45,32 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchContent = styled.h2`
-  text-align: center;
   font-size: ${({ theme }) => theme.fonts.$sm};
   font-weight: 700;
+  text-align: center;
 `;
 
 export const TagList = styled.ul`
   display: flex;
-  justify-content: center;
   gap: 15px;
+  justify-content: center;
 `;
 
 export const TagItem = styled.li`
+  padding: 5px 10px;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
-  padding: 5px 10px;
 `;
 
 export const HomeDropdown = styled.div`
-  background-color: ${({ theme }) => theme.colors.$secondary};
-  border-radius: 10px;
   display: flex;
   gap: 5px;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   padding: 5px 10px;
   margin-right: auto;
+  background-color: ${({ theme }) => theme.colors.$secondary};
+  border-radius: 10px;
 `;
 
 export const HomeDropdownText = styled.span`
@@ -88,10 +88,10 @@ export const ArticleCardItem = styled.li``;
 export const ArticleCardButton = styled.button`
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$white});
-  padding: 10px;
   gap: 10px;
+  padding: 10px;
+  background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$white});
+  border-radius: 10px;
   transition: 0.3s;
 
   &:hover {
@@ -101,9 +101,9 @@ export const ArticleCardButton = styled.button`
 
 export const ArticleCardTopWrapper = styled.div`
   display: flex;
-  width: 100%;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 `;
 export const ArticleCardTitle = styled.h2`
   font-size: ${({ theme }) => theme.fonts.$sm};
@@ -112,8 +112,8 @@ export const ArticleCardTitle = styled.h2`
 
 export const ArticleCardStatus = styled.div`
   padding: 5px 10px;
-  border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.$secondary};
+  border-radius: 10px;
 `;
 
 export const ArticleCardContent = styled.p`
@@ -148,9 +148,8 @@ export const ArticleCreateAt = styled.time`
 
 export const ArticleInfoWrapper = styled.div`
   display: flex;
-  align-items: center;
-
   gap: 5px;
+  align-items: center;
 `;
 
 export const ArticleInfoGroup = styled.div`

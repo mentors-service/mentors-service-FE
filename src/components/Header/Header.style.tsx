@@ -9,12 +9,11 @@ export const HeaderContainer = styled.header`
 
 export const LogoName = styled.h1`
   font-size: ${(props) => props.theme.fonts.$lg};
-  background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$secondary});
-  color: linear-gradient(red, blue);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   font-weight: 700;
+  background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$secondary});
+  background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -23,10 +22,10 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const HeaderButton = styled.button`
-  background-color: ${({ theme }) => theme.colors.$secondary};
-  border-radius: 10px;
   height: 34px;
   padding: 5px 10px;
+  background-color: ${({ theme }) => theme.colors.$secondary};
+  border-radius: 10px;
 `;
 
 export const HeaderButtonText = styled.span`
