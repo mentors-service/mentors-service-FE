@@ -49,6 +49,10 @@ q:before, q:after {
 table {
 	border-spacing: 0;
 	border-collapse: collapse;
-}`;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+`;
 
 export default GlobalStyle;
