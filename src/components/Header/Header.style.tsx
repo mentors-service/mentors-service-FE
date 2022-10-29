@@ -12,7 +12,7 @@ export const LogoName = styled.h1`
   font-weight: 700;
   background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$secondary});
   background-clip: text;
-  background-clip: text;
+  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
 
