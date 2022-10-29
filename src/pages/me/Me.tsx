@@ -1,4 +1,7 @@
-import useAuth from '@hooks/useAuth';
+import { checkIsLoggedIn } from '@lib/protectRoute';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MeInput from './components/Input';
 import MeTab from './components/tab';
 import * as S from './Me.style';
@@ -13,7 +16,24 @@ const Me = () => {
     console.log('button click');
   };
 
-  const authToken = useAuth();
+  const isLoggedIn = checkIsLoggedIn();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) return;
+
+    navigate('/');
+  }, [isLoggedIn, navigate]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/temp`, {
+        headers: {
+          Authorization: `Bearer`,
+        },
+      })
+      .then((res) => console.log(res.data));
+  }, []);
 
   return (
     <S.MeContainer>
