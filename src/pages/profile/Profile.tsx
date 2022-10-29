@@ -1,3 +1,4 @@
+import Button from '@components/Button/Button';
 import * as S from './Profile.style';
 
 const Profile = () => {
@@ -19,9 +20,9 @@ const Profile = () => {
         </S.MentorSkills>
       </S.ProfileWrapper>
 
-      <S.ProfileBtn>All activity</S.ProfileBtn>
-      <S.ProfileBtn>Article</S.ProfileBtn>
-      <S.ProfileBtn>Comment</S.ProfileBtn>
+      <Button>All activity</Button>
+      <Button>Article</Button>
+      <Button>Comment</Button>
     </>
   );
 };

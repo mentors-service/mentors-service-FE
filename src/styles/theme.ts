@@ -1,11 +1,7 @@
-import { css } from 'styled-components';
+import { DefaultTheme } from 'styled-components';
+import { colors } from './constants/colors';
+import { fonts } from './constants/fonts';
 
-const font = css`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  font-family: 'Inter';
-`;
+const theme: DefaultTheme = { colors, fonts };
 
-export const theme = { font };
+export default theme;

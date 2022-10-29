@@ -16,7 +16,8 @@ export const ProfileInfo = styled.div`
 
 export const Name = styled.div`
   margin-bottom: 34px;
-  font: ${(props) => props.theme.font};
+  font-size: ${(props) => props.theme.fonts.$base};
+  line-height: 22px;
 `;
 
 export const Description = styled(Name)`
@@ -34,14 +35,3 @@ export const Mentor = styled(Name)`
 `;
 
 export const Skills = styled(Name)``;
-
-export const ProfileBtn = styled.button`
-  display: inline-block;
-  max-width: fit-content;
-  height: 32px;
-  padding: 0px 8px 0px 8px;
-  margin: 120px 0 0 25px;
-  font: ${(props) => props.theme.font};
-  background: #ebebeb;
-  border-radius: 10px;
-`;

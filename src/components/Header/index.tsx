@@ -6,13 +6,13 @@ const Header = () => {
       <S.LogoName>Mentors</S.LogoName>
 
       <S.BtnWrapper>
-        <S.HeaderBtn>
+        <button type='button'>
           <img src='/img/ProfileBtn.png' alt='' />
-        </S.HeaderBtn>
+        </button>
 
-        <S.HeaderBtn>
+        <button type='button'>
           <img src='/img/LogoutBtn.png' alt='' />
-        </S.HeaderBtn>
+        </button>
       </S.BtnWrapper>
     </S.HeaderWrapper>
   );

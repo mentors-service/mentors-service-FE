@@ -30,7 +30,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+body {  
+	font-family: 'Inter';  
+	font-weight: 400;
 	line-height: 1;
 }
 ol, ul {
