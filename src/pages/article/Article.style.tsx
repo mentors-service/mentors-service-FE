@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ProfileWrapper = styled.main`
+export const ProfileWrapper = styled.div`
   padding: 0 50px;
 `;
 
@@ -44,10 +44,10 @@ export const Dl = styled.dl`
 `;
 
 export const Dt = styled.dt`
+  width: 60px;
   font-size: ${(props) => props.theme.fonts.$xs};
   font-weight: 700;
   line-height: 18px;
-  width: 60px;
 `;
 
 export const Dd = styled.dd`
@@ -63,16 +63,22 @@ export const ArticleContent = styled.p`
   line-height: 16px;
 `;
 
-export const PersonnelStatus = styled(ProgressSpan)`
-  img {
-    margin-right: 12px;
-  }
+export const PersonnelStatus = styled.div`
   display: flex;
   align-items: center;
-  padding: 10px;
-  margin-left: 192px;
-  font-size: ${(props) => props.theme.fonts.$xxs};
-  line-height: 15px;
+  justify-content: flex-end;
+  width: 100%;
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 78px;
+    height: 34px;
+    font-size: ${(props) => props.theme.fonts.$xxs};
+    line-height: 15px;
+    background: #ebebeb;
+    border-radius: 10px;
+  }
 `;
 
 export const TextareaWrapper = styled.div`

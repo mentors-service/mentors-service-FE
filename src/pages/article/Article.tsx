@@ -1,7 +1,26 @@
+import { ProfileIcon } from '@assets/svgs';
 import * as S from './Article.style';
 import UserStatus from './UserStatus';
 
 const Article = () => {
+  const items = [
+    {
+      id: 0,
+      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+    },
+    {
+      id: 1,
+      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+    },
+    {
+      id: 2,
+      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+    },
+    {
+      id: 3,
+      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+    },
+  ];
   return (
     <S.ProfileWrapper>
       <S.User>
@@ -39,8 +58,10 @@ const Article = () => {
       </S.ArticleContent>
 
       <S.PersonnelStatus>
-        <img src='/img/Person.png' alt='' />
-        1/5
+        <div>
+          <ProfileIcon />
+          <span> 1/5</span>
+        </div>
       </S.PersonnelStatus>
 
       <S.TextareaWrapper>

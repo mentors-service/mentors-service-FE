@@ -1,10 +1,11 @@
 import * as S from './UserStatus.style';
+import ProfileImg from '../../assets/img/ProfileImg.png';
 
 const UserStatus = () => {
   return (
     <S.UserStatusWrapper>
       <img
-        src='/img/ProfileImg.png'
+        src={ProfileImg}
         alt=''
         style={{
           width: '25px',
