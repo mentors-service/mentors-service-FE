@@ -5,7 +5,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 0 50px;
+  padding: 25px 50px 0 50px;
 `;
 
 export const SearchWrapper = styled.div`
