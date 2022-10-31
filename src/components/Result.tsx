@@ -5,7 +5,7 @@ const Result = () => {
   const { markdownText } = useMarkdown();
 
   const renderers = {
-    img: ({ ...props }) => <img alt={props.alt} style={{ maxWidth: '300px' }} {...props} />,
+    img: ({ ...props }) => <img alt={props.alt} style={{ maxWidth: '260px' }} {...props} />,
   };
 
   return <ReactMarkdown components={renderers}>{markdownText}</ReactMarkdown>;
