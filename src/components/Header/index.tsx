@@ -1,3 +1,4 @@
+import { LogoutIcon, ProfileIcon } from '@assets/svgs';
 import * as S from './Header.style';
 
 const Header = () => {
@@ -7,11 +8,11 @@ const Header = () => {
 
       <S.BtnWrapper>
         <button type='button'>
-          <img src='/img/ProfileBtn.png' alt='' />
+          <ProfileIcon />
         </button>
 
         <button type='button'>
-          <img src='/img/LogoutBtn.png' alt='' />
+          <LogoutIcon />
         </button>
       </S.BtnWrapper>
     </S.HeaderWrapper>
