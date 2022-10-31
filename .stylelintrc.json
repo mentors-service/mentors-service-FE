@@ -28,7 +28,7 @@
     "property-no-vendor-prefix": [
       true,
       {
-        "ignoreProperties": ["appearance"]
+        "ignoreProperties": ["appearance", "background-clip"]
       }
     ],
 
@@ -40,6 +40,7 @@
         "ignorePseudoClasses": ["global"]
       }
     ],
-    "string-quotes": "single"
+    "string-quotes": "single",
+    "ignoreProperties": ["background-clip"]
   }
 }

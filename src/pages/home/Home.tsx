@@ -1,7 +1,31 @@
 import { BookmarkIcon, CommentIcon, GroupIcon, KeyboardArrowDownIcon } from '@assets/svgs';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import * as S from './Home.style';
 
 const Home = () => {
+  const getArticles = async ({ pageParam = 1 }) => {
+    const data = await axios.get(`https://reqres.in/api/users?page=${pageParam}`).then((res) => res.data);
+
+    return data;
+  };
+
+  const checkNextPage = (lastPage: any) => {
+    if (lastPage.page >= lastPage.total_pages) return undefined;
+
+    return lastPage.page + 1;
+  };
+
+  const {
+    data = { pages: [], pageParams: 1 },
+    fetchNextPage,
+    isFetching,
+    hasNextPage,
+  } = useInfiniteQuery(['temp'], getArticles, { getNextPageParam: checkNextPage });
+
+  const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
+
   return (
     <S.HomeContainer>
       <S.SearchWrapper>
@@ -24,7 +48,7 @@ const Home = () => {
       </S.HomeDropdown>
 
       <S.ArticleCardList>
-        {[1, 2, 3, 4].map((item) => (
+        {[1].map((item) => (
           <S.ArticleCardItem key={item}>
             <S.ArticleCardButton>
               <S.ArticleCardTopWrapper>
@@ -66,6 +90,25 @@ const Home = () => {
           </S.ArticleCardItem>
         ))}
       </S.ArticleCardList>
+
+      {data.pages.map((page) =>
+        page.data.map((item: any) => (
+          <li key={item.id}>
+            <b>{item.avatar}</b>
+            <p>{item.email}</p>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo enim, laboriosam voluptates nemo
+              dolores corporis exercitationem repudiandae rem facilis magnam quae quos molestiae delectus vel maiores
+              ea,
+            </div>
+            <span>{item.first_name}</span>
+            <span>{item.last_name}</span>
+          </li>
+        ))
+      )}
+
+      <div ref={ref} />
+      <div>Infinite Scroll</div>
     </S.HomeContainer>
   );
 };
