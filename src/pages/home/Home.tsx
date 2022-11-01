@@ -1,4 +1,5 @@
 import { BookmarkIcon, CommentIcon, GroupIcon, KeyboardArrowDownIcon } from '@assets/svgs';
+import DropdownWrapper from '@components/Dropdown/DropdownWrapper';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -22,7 +23,7 @@ const Home = () => {
     fetchNextPage,
     isFetching,
     hasNextPage,
-  } = useInfiniteQuery(['temp'], getArticles, { getNextPageParam: checkNextPage });
+  } = useInfiniteQuery(['temp'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
 
   const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
 
@@ -46,6 +47,14 @@ const Home = () => {
         <S.HomeDropdownText>Filter</S.HomeDropdownText>
         <KeyboardArrowDownIcon width={24} height={24} />
       </S.HomeDropdown>
+
+      <DropdownWrapper>
+        <DropdownWrapper.Button>
+          <DropdownWrapper.Text />
+          <DropdownWrapper.Icon />
+        </DropdownWrapper.Button>
+        <DropdownWrapper.List />
+      </DropdownWrapper>
 
       <S.ArticleCardList>
         {[1].map((item) => (
