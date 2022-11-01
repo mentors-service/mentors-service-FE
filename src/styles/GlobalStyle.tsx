@@ -24,7 +24,8 @@ time, mark, audio, video {
 	border: 0
 }
 input,
-button{ padding:0; overflow:visible; cursor:pointer;
+button{ padding:0; overflow:visible;
+font-family: 'Open Sans', 'Noto Sans KR', sans-serif; cursor:pointer;
 background: inherit ; border:none; border-radius:0; box-shadow:none;
 -webkit-apperance : none;}
 /* HTML5 display-role reset for older browsers */

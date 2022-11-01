@@ -4,14 +4,15 @@ import Button from '@components/Dropdown/Button';
 import Text from '@components/Dropdown/Text';
 import Icon from '@components/Dropdown/Icon';
 import List from '@components/Dropdown/List';
+import styled from 'styled-components';
 
-interface DropdownWrapperProps {
+interface DropdownProps {
   children: React.ReactNode;
 }
 
-const DropdownWrapper = ({ children }: DropdownWrapperProps) => {
+const Dropdown = ({ children }: DropdownProps) => {
   const [isOpened, setIsOpened] = useState(false);
-  const [dropdownText, setDropdownText] = useState('Filter');
+  const [dropdownText, setDropdownText] = useState('필터링');
 
   const handleClickDropdown = () => {
     setIsOpened((prev) => !prev);
@@ -19,7 +20,7 @@ const DropdownWrapper = ({ children }: DropdownWrapperProps) => {
 
   const handleClickContent = (e: React.MouseEvent<HTMLButtonElement>) => {
     setDropdownText(e.currentTarget.innerText);
-    setIsOpened((prev) => !prev);
+    setIsOpened(false);
   };
 
   const contextValue = useMemo(
@@ -27,12 +28,20 @@ const DropdownWrapper = ({ children }: DropdownWrapperProps) => {
     [isOpened, dropdownText]
   );
 
-  return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;
+  return (
+    <DropdownContext.Provider value={contextValue}>
+      <DropdownWrapper>{children}</DropdownWrapper>
+    </DropdownContext.Provider>
+  );
 };
 
-DropdownWrapper.Button = Button;
-DropdownWrapper.Text = Text;
-DropdownWrapper.Icon = Icon;
-DropdownWrapper.List = List;
+Dropdown.Button = Button;
+Dropdown.Text = Text;
+Dropdown.Icon = Icon;
+Dropdown.List = List;
 
-export default DropdownWrapper;
+const DropdownWrapper = styled.div`
+  position: relative;
+`;
+
+export default Dropdown;

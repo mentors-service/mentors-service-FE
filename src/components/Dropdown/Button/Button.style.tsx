@@ -5,8 +5,10 @@ export const Button = styled.button`
   gap: 5px;
   align-items: center;
   justify-content: center;
+  min-width: 120px;
   padding: 5px 10px;
   margin-right: auto;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
 `;

@@ -40,7 +40,6 @@
         "ignorePseudoClasses": ["global"]
       }
     ],
-    "string-quotes": "single",
-    "ignoreProperties": ["background-clip"]
+    "string-quotes": "single"
   }
 }

@@ -1,5 +1,5 @@
-import { BookmarkIcon, CommentIcon, GroupIcon, KeyboardArrowDownIcon } from '@assets/svgs';
-import DropdownWrapper from '@components/Dropdown/DropdownWrapper';
+import { BookmarkIcon, CommentIcon, GroupIcon } from '@assets/svgs';
+import Dropdown from '@components/Dropdown';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -43,18 +43,14 @@ const Home = () => {
         ))}
       </S.TagList>
 
-      <S.HomeDropdown>
-        <S.HomeDropdownText>Filter</S.HomeDropdownText>
-        <KeyboardArrowDownIcon width={24} height={24} />
-      </S.HomeDropdown>
+      <Dropdown>
+        <Dropdown.Button>
+          <Dropdown.Text />
+          <Dropdown.Icon />
+        </Dropdown.Button>
 
-      <DropdownWrapper>
-        <DropdownWrapper.Button>
-          <DropdownWrapper.Text />
-          <DropdownWrapper.Icon />
-        </DropdownWrapper.Button>
-        <DropdownWrapper.List />
-      </DropdownWrapper>
+        <Dropdown.List />
+      </Dropdown>
 
       <S.ArticleCardList>
         {[1].map((item) => (
