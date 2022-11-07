@@ -26,7 +26,7 @@ const ImageUpload = () => {
       <input type='file' ref={imageUploadRef} onChange={handleChangeImageUpload} style={{ display: 'none' }} />
 
       <button type='button' onClick={handleClickImageUpload}>
-        upload
+        Image Upload
       </button>
     </div>
   );
