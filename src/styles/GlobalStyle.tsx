@@ -17,12 +17,15 @@ time, mark, audio, video {
 	padding: 0;
 	margin: 0;
 	font: inherit;
+	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
 	font-size: 100%;
+	color: #0d0d0d;
 	vertical-align: baseline;
-	border: 0;
+	border: 0
 }
 input,
-button{ padding:0; overflow:visible; cursor:pointer;
+button{ padding:0; overflow:visible;
+font-family: 'Open Sans', 'Noto Sans KR', sans-serif; cursor:pointer;
 background: inherit ; border:none; border-radius:0; box-shadow:none;
 -webkit-apperance : none;}
 /* HTML5 display-role reset for older browsers */
@@ -31,8 +34,6 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {  
-	font-family: 'Inter';  
-	font-weight: 400;
 	line-height: 1;
 }
 ol, ul {
@@ -49,6 +50,10 @@ q:before, q:after {
 table {
 	border-spacing: 0;
 	border-collapse: collapse;
-}`;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+`;
 
 export default GlobalStyle;

@@ -1,20 +1,25 @@
+import { LogoutIcon, ProfileIcon } from '@assets/svgs';
 import * as S from './Header.style';
 
 const Header = () => {
   return (
-    <S.HeaderWrapper>
+    <S.HeaderContainer>
       <S.LogoName>Mentors</S.LogoName>
 
-      <S.BtnWrapper>
-        <button type='button'>
-          <img src='/img/ProfileBtn.png' alt='' />
-        </button>
+      <S.ButtonWrapper>
+        <S.HeaderButton>
+          <ProfileIcon />
+        </S.HeaderButton>
 
-        <button type='button'>
-          <img src='/img/LogoutBtn.png' alt='' />
-        </button>
-      </S.BtnWrapper>
-    </S.HeaderWrapper>
+        <S.HeaderButton>
+          <LogoutIcon />
+        </S.HeaderButton>
+
+        <S.HeaderButton>
+          <S.HeaderButtonText>Kakao Login</S.HeaderButtonText>
+        </S.HeaderButton>
+      </S.ButtonWrapper>
+    </S.HeaderContainer>
   );
 };
 
