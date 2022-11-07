@@ -8,7 +8,7 @@ import MarkdownContext from '@hooks/contexts/markdownContext';
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { createArticle } from '@api/article';
-import { FormErrorMessages, NumberCheck } from '@utils/formUtil';
+import { formErrorMessages, numberCheck } from '@utils/formUtil';
 import * as S from './Write.style';
 import { IFormInput } from './types';
 
@@ -50,9 +50,9 @@ const Write = () => {
           })}
           placeholder='제목 : 멘토링 모집'
           id='title'
-          style={{ border: watch('title') && '2px solid #0BBFAD' }}
+          style={{ border: watch('title') && '2px solid #0BBFAD', color: watch('title') && '2px solid #0BBFAD' }}
         />
-        {errors?.title?.type === 'required' && <S.ErrorMessage>{FormErrorMessages.NAME_REQUIRED}</S.ErrorMessage>}
+        {errors?.title?.type === 'required' && <S.ErrorMessage>{formErrorMessages.NAME_REQUIRED}</S.ErrorMessage>}
 
         <input
           {...register('place', {
@@ -62,7 +62,7 @@ const Write = () => {
           id='place'
           style={{ border: watch('place') && '2px solid #0BBFAD', color: watch('place') && '2px solid #0BBFAD' }}
         />
-        {errors?.place?.type === 'required' && <S.ErrorMessage>{FormErrorMessages.PLACE_REQUIRED}</S.ErrorMessage>}
+        {errors?.place?.type === 'required' && <S.ErrorMessage>{formErrorMessages.PLACE_REQUIRED}</S.ErrorMessage>}
 
         <input
           {...register('tag', {
@@ -72,20 +72,20 @@ const Write = () => {
           id='tag'
           style={{ border: watch('tag') && '2px solid #0BBFAD', color: watch('tag') && '2px solid #0BBFAD' }}
         />
-        {errors?.tag?.type === 'required' && <S.ErrorMessage>{FormErrorMessages.TAG_REQUIRED}</S.ErrorMessage>}
+        {errors?.tag?.type === 'required' && <S.ErrorMessage>{formErrorMessages.TAG_REQUIRED}</S.ErrorMessage>}
 
         <input
           {...register('schedule', {
             required: true,
-            pattern: NumberCheck,
+            pattern: numberCheck,
           })}
           placeholder='일정 : 2022-01-01~2022-11-30'
           id='schedule'
           style={{ border: watch('schedule') && '2px solid #0BBFAD', color: watch('tag') && '2px solid #0BBFAD' }}
         />
-        {errors?.schedule?.type === 'pattern' && <S.ErrorMessage>{FormErrorMessages.SCHEDULE}</S.ErrorMessage>}
+        {errors?.schedule?.type === 'pattern' && <S.ErrorMessage>{formErrorMessages.SCHEDULE}</S.ErrorMessage>}
         {errors?.schedule?.type === 'required' && (
-          <S.ErrorMessage>{FormErrorMessages.SCHEDULE_REQUIRED}</S.ErrorMessage>
+          <S.ErrorMessage>{formErrorMessages.SCHEDULE_REQUIRED}</S.ErrorMessage>
         )}
 
         <div>

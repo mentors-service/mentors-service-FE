@@ -1,4 +1,4 @@
-export const FormErrorMessages = {
+export const formErrorMessages = {
   NAME_REQUIRED: '제목은 필수입니다.',
   PLACE_REQUIRED: '장소는 필수입니다.',
   TAG_REQUIRED: '태그는 필수입니다.',
@@ -7,5 +7,5 @@ export const FormErrorMessages = {
 };
 
 // 숫자 검사
-export const NumberCheck =
+export const numberCheck =
   /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])~\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
