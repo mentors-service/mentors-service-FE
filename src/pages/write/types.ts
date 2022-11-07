@@ -1,6 +1,3 @@
-export interface IFormInput {
-  title: string;
-  place: string;
-  tag: string;
-  schedule: string;
-}
+export type InputKeys = 'title' | 'place' | 'tag' | 'schedule';
+
+export type IFormInput = Record<InputKeys, string>;

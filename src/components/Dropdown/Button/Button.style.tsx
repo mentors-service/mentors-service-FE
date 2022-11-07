@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  box-sizing: border-box;
   display: flex;
   gap: 5px;
   align-items: center;
@@ -8,7 +9,6 @@ export const Button = styled.button`
   min-width: 120px;
   padding: 5px 10px;
   margin-right: auto;
-  box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
 `;

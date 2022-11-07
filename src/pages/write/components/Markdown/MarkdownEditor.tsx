@@ -1,5 +1,5 @@
+import useMarkdown from '@hooks/contexts/useMarkdown';
 import styled from 'styled-components';
-import useMarkdown from '../hooks/contexts/useMarkdown';
 
 const MarkdownEditor = () => {
   const { markdownText, setMarkdownText } = useMarkdown();
@@ -15,7 +15,10 @@ const MarkdownEditor = () => {
 
 const Textarea = styled.textarea`
   width: 100%;
+  box-sizing: border-box;
   padding: 10px;
+  border-radius: 10px;
+  border: 2px solid ${({ theme }) => theme.colors.$gray};
 `;
 
 export default MarkdownEditor;

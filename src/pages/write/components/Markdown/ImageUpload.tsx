@@ -1,5 +1,6 @@
+import useMarkdown from '@hooks/contexts/useMarkdown';
 import { useRef } from 'react';
-import useMarkdown from '../hooks/contexts/useMarkdown';
+import styled from 'styled-components';
 
 const ImageUpload = () => {
   const imageUploadRef = useRef<HTMLInputElement>(null);
@@ -25,11 +26,18 @@ const ImageUpload = () => {
     <div>
       <input type='file' ref={imageUploadRef} onChange={handleChangeImageUpload} style={{ display: 'none' }} />
 
-      <button type='button' onClick={handleClickImageUpload}>
-        Image Upload
-      </button>
+      <Button onClick={handleClickImageUpload}>Image Upload</Button>
     </div>
   );
 };
+
+const Button = styled.button`
+  width: 100%;
+  height: 34px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: ${({ theme }) => theme.colors.$white};
+  background: ${({ theme }) => theme.colors.$secondary};
+`;
 
 export default ImageUpload;
