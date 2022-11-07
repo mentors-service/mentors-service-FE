@@ -3,19 +3,23 @@ import * as S from './Header.style';
 
 const Header = () => {
   return (
-    <S.HeaderWrapper>
+    <S.HeaderContainer>
       <S.LogoName>Mentors</S.LogoName>
 
-      <S.BtnWrapper>
-        <button type='button'>
+      <S.ButtonWrapper>
+        <S.HeaderButton>
           <ProfileIcon />
-        </button>
+        </S.HeaderButton>
 
-        <button type='button'>
+        <S.HeaderButton>
           <LogoutIcon />
-        </button>
-      </S.BtnWrapper>
-    </S.HeaderWrapper>
+        </S.HeaderButton>
+
+        <S.HeaderButton>
+          <S.HeaderButtonText>Kakao Login</S.HeaderButtonText>
+        </S.HeaderButton>
+      </S.ButtonWrapper>
+    </S.HeaderContainer>
   );
 };
 
