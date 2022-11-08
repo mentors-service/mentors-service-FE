@@ -13,12 +13,13 @@ const MarkdownEditor = () => {
   );
 };
 
-const Textarea = styled.textarea`
-  width: 100%;
+const Textarea = styled.textarea<{ value: string }>`
   box-sizing: border-box;
+  width: 100%;
   padding: 10px;
+  border: 2px solid ${({ value, theme }) => (value ? theme.colors.$secondary : theme.colors.$gray)};
   border-radius: 10px;
-  border: 2px solid ${({ theme }) => theme.colors.$gray};
+  transition: 0.3s;
 `;
 
 export default MarkdownEditor;

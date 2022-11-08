@@ -34,10 +34,10 @@ const ImageUpload = () => {
 const Button = styled.button`
   width: 100%;
   height: 34px;
-  border-radius: 10px;
   padding: 5px 10px;
   color: ${({ theme }) => theme.colors.$white};
   background: ${({ theme }) => theme.colors.$secondary};
+  border-radius: 10px;
 `;
 
 export default ImageUpload;

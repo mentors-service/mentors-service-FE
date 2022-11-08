@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
 import ImageDnDWrapper from '@write/components/Markdown/ImageDnDWrapper';
 import MarkdownContext from '@hooks/contexts/markdownContext';
-import { ChangeEvent, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { createArticle } from '@api/article';
 import WriteInput from '@write/components/Input';
@@ -14,7 +14,6 @@ import * as S from './Write.style';
 
 const Write = () => {
   const [markdownText, setMarkdownText] = useState('');
-  const [range, setRange] = useState('');
   const navigate = useNavigate();
 
   const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
@@ -28,11 +27,10 @@ const Write = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    control,
   } = useForm<IFormInput>();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setRange(e.target.value);
-  };
+  const sliderValue = useWatch({ control, name: 'slider', defaultValue: '0' });
 
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     // navigate('/');
@@ -70,12 +68,14 @@ const Write = () => {
           isError={Boolean(errors.schedule)}
         />
 
-        <div>
-          <label htmlFor='인원수'>
-            <span> 인원수 : {range}</span>
-          </label>
-          <input type='range' placeholder='인원 수' min='0' max='6' step='1' value={range} onChange={handleChange} />
-        </div>
+        <S.SliderWrapper>
+          <S.SliderText>인원수: {sliderValue}</S.SliderText>
+
+          <S.SliderBar>
+            <S.SliderInput type='range' min={0} max={10} defaultValue={0} {...register('slider')} />
+            <S.SliderStyleBar value={Number(sliderValue)} />
+          </S.SliderBar>
+        </S.SliderWrapper>
 
         <MarkdownContext.Provider value={contextValue}>
           <ImageDnDWrapper>
@@ -87,7 +87,7 @@ const Write = () => {
           <Result />
         </MarkdownContext.Provider>
 
-        <S.SubmitButton type='submit'>글 작성하기</S.SubmitButton>
+        <S.SubmitButton>글 작성하기</S.SubmitButton>
       </S.WriteWrapper>
     </form>
   );
