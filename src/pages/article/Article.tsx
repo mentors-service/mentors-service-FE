@@ -1,30 +1,20 @@
 import { ProfileIcon } from '@assets/svgs';
 import * as S from './Article.style';
+import Comments from './Comments';
 import UserStatus from './UserStatus';
 
 const Article = () => {
-  const items = [
-    {
-      id: 0,
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+  const userStatusData = {
+    creater: {
+      img: 'val',
+      name: 'Name',
     },
-    {
-      id: 1,
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-    },
-    {
-      id: 2,
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-    },
-    {
-      id: 3,
-      comment: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
-    },
-  ];
+    createdAt: '20221024',
+  };
   return (
     <S.ProfileWrapper>
       <S.User>
-        <UserStatus />
+        <UserStatus creater={userStatusData.creater} createdAt={userStatusData.createdAt} />
         <S.ProgressSpan>In Progress</S.ProgressSpan>
       </S.User>
 
@@ -69,24 +59,7 @@ const Article = () => {
         <S.PostBtn type='submit'>Post</S.PostBtn>
       </S.TextareaWrapper>
 
-      <S.Comments>
-        <S.Comment>
-          <UserStatus />
-          <S.CommentContent>Lorem Ipsum is simply dummy text of the printing and typesetting industry</S.CommentContent>
-        </S.Comment>
-        <S.Comment>
-          <UserStatus />
-          <S.CommentContent>Lorem Ipsum is simply dummy text of the printing and typesetting industry</S.CommentContent>
-        </S.Comment>
-        <S.ReplyComment>
-          <UserStatus />
-          <S.CommentContent>Lorem Ipsum is simply dummy text of the printing and typesetting industry</S.CommentContent>
-        </S.ReplyComment>
-        <S.Comment>
-          <UserStatus />
-          <S.CommentContent>Lorem Ipsum is simply dummy text of the printing and typesetting industry</S.CommentContent>
-        </S.Comment>
-      </S.Comments>
+      <Comments />
     </S.ProfileWrapper>
   );
 };

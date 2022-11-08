@@ -1,7 +1,15 @@
+import ProfileImg from '@assets/img/ProfileImg.png';
 import * as S from './UserStatus.style';
-import ProfileImg from '../../assets/img/ProfileImg.png';
 
-const UserStatus = () => {
+interface IUserStatusProps {
+  creater: {
+    img: string;
+    name: string;
+  };
+  createdAt: string;
+}
+
+const UserStatus = ({ creater, createdAt }: IUserStatusProps) => {
   return (
     <S.UserStatusWrapper>
       <img
@@ -12,8 +20,8 @@ const UserStatus = () => {
           height: '25px',
         }}
       />
-      <S.Name>이무성</S.Name>
-      <S.ActivityTime>00 hours age</S.ActivityTime>
+      <S.Name>{creater.name}</S.Name>
+      <S.ActivityTime>{createdAt}</S.ActivityTime>
     </S.UserStatusWrapper>
   );
 };

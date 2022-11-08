@@ -104,21 +104,3 @@ export const PostBtn = styled.button`
   background: #ebebeb;
   border-radius: 10px;
 `;
-
-export const Comments = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 50px;
-`;
-
-export const Comment = styled.article``;
-
-export const ReplyComment = styled.article`
-  padding-left: 25px;
-`;
-export const CommentContent = styled.p`
-  margin-top: 10px;
-  font-size: ${(props) => props.theme.fonts.$xs};
-  line-height: 16px;
-`;
