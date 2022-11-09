@@ -5,17 +5,17 @@ interface ProgressBarProps {
 }
 
 const ProgressBar = ({ time }: ProgressBarProps) => {
-  const [temp, setTemp] = useState(time / 1000);
+  const [timer, setTimer] = useState(time / 1000);
 
   useEffect(() => {
     const intervel = setInterval(() => {
-      setTemp((prev) => prev - 1);
+      setTimer((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(intervel);
-  }, [temp]);
+  }, [timer]);
 
-  return <span>{temp}</span>;
+  return <span>{timer}</span>;
 };
 
 export default ProgressBar;

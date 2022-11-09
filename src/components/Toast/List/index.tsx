@@ -1,5 +1,5 @@
 import useToast from '@hooks/contexts/Toast/useToast';
-import Item from './Item';
+import Item from './ListItem';
 
 const List = () => {
   const { selector } = useToast();

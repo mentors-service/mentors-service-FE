@@ -1,13 +1,13 @@
+import { Istate } from '@components/Toast/type';
 import useToast from '@hooks/contexts/Toast/useToast';
 import { useEffect } from 'react';
 import ProgressBar from './ProgressBar';
-import { Istate } from './type';
 
 interface ItemProps {
   item: Istate;
 }
 
-const Item = ({ item }: ItemProps) => {
+const ListItem = ({ item }: ItemProps) => {
   const { id, message, time, type } = item;
 
   const { toast } = useToast();
@@ -33,4 +33,4 @@ const Item = ({ item }: ItemProps) => {
   );
 };
 
-export default Item;
+export default ListItem;
