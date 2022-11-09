@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const UserStatusWrapper = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
 `;
 
