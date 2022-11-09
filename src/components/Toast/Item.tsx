@@ -1,7 +1,7 @@
+import useToast from '@hooks/contexts/Toast/useToast';
 import { useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import { Istate } from './type';
-import useToast from './useToast';
 
 interface ItemProps {
   item: Istate;

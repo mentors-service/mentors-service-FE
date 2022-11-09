@@ -1,5 +1,5 @@
 import { createContext, Dispatch } from 'react';
-import { Istate } from './type';
+import { Istate } from '../../../components/Toast/type';
 
 interface defaultContext {
   selector: Istate[];

@@ -1,4 +1,4 @@
-import useDropdown from '@hooks/contexts/useDropdown';
+import useDropdown from '@hooks/contexts/Dropdown/useDropdown';
 import { useEffect, useState } from 'react';
 import * as S from './List.style';
 

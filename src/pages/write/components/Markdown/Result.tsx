@@ -1,4 +1,4 @@
-import useMarkdown from '@hooks/contexts/useMarkdown';
+import useMarkdown from '@hooks/contexts/Markdown/useMarkdown';
 import ReactMarkdown from 'react-markdown';
 
 const Result = () => {

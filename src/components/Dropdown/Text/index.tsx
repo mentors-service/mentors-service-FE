@@ -1,4 +1,4 @@
-import useDropdown from '@hooks/contexts/useDropdown';
+import useDropdown from '@hooks/contexts/Dropdown/useDropdown';
 import * as S from './Text.style';
 
 const Text = () => {

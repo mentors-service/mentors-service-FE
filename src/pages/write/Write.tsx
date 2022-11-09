@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import ImageDnDWrapper from '@write/components/Markdown/ImageDnDWrapper';
-import MarkdownContext from '@hooks/contexts/markdownContext';
+import MarkdownContext from '@hooks/contexts/Markdown/markdownContext';
 import { useMemo, useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
 import { createArticle } from '@api/article';
@@ -10,7 +10,7 @@ import MarkdownEditor from '@write/components/Markdown/MarkdownEditor';
 import ImageUpload from '@write/components/Markdown/ImageUpload';
 import Result from '@write/components/Markdown/Result';
 import { numberCheck } from '@utils/formUtil';
-import useToast from '@components/Toast/useToast';
+import useToast from '@hooks/contexts/Toast/useToast';
 import { IFormInput } from './types';
 import * as S from './Write.style';
 
