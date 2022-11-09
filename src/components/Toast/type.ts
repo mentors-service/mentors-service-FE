@@ -1,5 +1,5 @@
 export interface Istate {
-  id: string;
+  id: number;
   message: string;
   type: 'SUCCESS' | 'ERROR' | 'INFO';
   time?: number;

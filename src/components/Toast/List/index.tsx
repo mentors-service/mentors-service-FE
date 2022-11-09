@@ -1,15 +1,18 @@
 import useToast from '@hooks/contexts/Toast/useToast';
-import Item from './ListItem';
+import * as S from './List.style';
+import ListItem from './ListItem';
 
 const List = () => {
   const { selector } = useToast();
 
+  if (!selector.length) return null;
+
   return (
-    <ul>
+    <S.List>
       {selector.map((item) => (
-        <Item key={item.id} item={item} />
+        <ListItem key={item.id} item={item} />
       ))}
-    </ul>
+    </S.List>
   );
 };
 

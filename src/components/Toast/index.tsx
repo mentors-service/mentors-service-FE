@@ -9,14 +9,12 @@ interface TempProps {
 
 const Toast = ({ children }: TempProps) => {
   const [selector, toast] = useReducer((state: Istate[], action: { type: 'ADD' | 'DELETE'; payload: Istate }) => {
-    switch (action.type) {
-      case 'ADD':
-        return [...state, action.payload];
-      case 'DELETE':
-        return state.filter((item) => item.id !== action.payload.id);
-      default:
-        return state;
-    }
+    const type: Record<'ADD' | 'DELETE', Istate[]> = {
+      ADD: [...state, action.payload],
+      DELETE: state.filter((item) => item.id !== action.payload.id),
+    };
+
+    return type[action.type];
   }, []);
 
   const contextValue = useMemo(() => ({ selector, toast }), [selector]);

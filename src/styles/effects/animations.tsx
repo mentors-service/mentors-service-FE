@@ -48,10 +48,26 @@ const bounceOut = keyframes`
   }
 `;
 
+const fadeInDownBig = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0)
+  }
+`;
+
 export const BounceIn = css`
   animation: ${bounceIn} 1.5s;
 `;
 
 export const BounceOut = css`
   animation: ${bounceOut} 1.5s;
+`;
+
+export const FadeInDownBig = css`
+  animation: ${fadeInDownBig} 0.3s;
 `;
