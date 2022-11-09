@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useForm, SubmitHandler, useWatch } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import ImageDnDWrapper from '@write/components/Markdown/ImageDnDWrapper';
 import MarkdownContext from '@hooks/contexts/markdownContext';
 import { useMemo, useState } from 'react';
@@ -9,11 +9,14 @@ import WriteInput from '@write/components/Input';
 import MarkdownEditor from '@write/components/Markdown/MarkdownEditor';
 import ImageUpload from '@write/components/Markdown/ImageUpload';
 import Result from '@write/components/Markdown/Result';
+import { numberCheck } from '@utils/formUtil';
+import useToast from '@components/Toast/useToast';
 import { IFormInput } from './types';
 import * as S from './Write.style';
 
 const Write = () => {
   const [markdownText, setMarkdownText] = useState('');
+
   const navigate = useNavigate();
 
   const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
@@ -27,43 +30,45 @@ const Write = () => {
     handleSubmit,
     formState: { errors },
     watch,
-    control,
   } = useForm<IFormInput>();
 
-  const sliderValue = useWatch({ control, name: 'slider', defaultValue: '0' });
+  const { toast } = useToast();
+
+  const sliderValue = watch('slider', '0');
 
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     // navigate('/');
     // createMutaion.mutate();
   };
 
+  const onError = () => {
+    toast({ type: 'ADD', payload: { id: '1', message: 'error', type: 'ERROR', time: 3000 } });
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit, onError)}>
+      {/* <Toast message='test입니다.' isView type='error' /> */}
       <S.WriteWrapper>
         <WriteInput
           register={register('title', { required: true })}
-          watchText={watch('title')}
           placeholder='제목: 멘토링 모집'
           isError={Boolean(errors.title)}
         />
 
         <WriteInput
           register={register('place', { required: true })}
-          watchText={watch('place')}
           placeholder='장소 : 서울, 인천'
           isError={Boolean(errors.place)}
         />
 
         <WriteInput
           register={register('tag', { required: true })}
-          watchText={watch('tag')}
           placeholder='태그 : Java , React'
           isError={Boolean(errors.tag)}
         />
 
         <WriteInput
-          register={register('schedule', { required: true })}
-          watchText={watch('schedule')}
+          register={register('schedule', { required: true, pattern: numberCheck })}
           placeholder='일정 : 2022-01-01~2022-11-30'
           isError={Boolean(errors.schedule)}
         />
@@ -72,7 +77,7 @@ const Write = () => {
           <S.SliderText>인원수: {sliderValue}</S.SliderText>
 
           <S.SliderBar>
-            <S.SliderInput type='range' min={0} max={10} defaultValue={0} {...register('slider')} />
+            <S.SliderInput {...register('slider')} type='range' min={0} max={10} defaultValue={0} />
             <S.SliderStyleBar value={Number(sliderValue)} />
           </S.SliderBar>
         </S.SliderWrapper>

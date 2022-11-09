@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WriteInput = styled.input<{ text: string; error: boolean }>`
+export const WriteInput = styled.input<{ text: boolean; error: boolean }>`
   padding: 5px 10px;
   border-radius: 10px;
   transition: 0.3s;
