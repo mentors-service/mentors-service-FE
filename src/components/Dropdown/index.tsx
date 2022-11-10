@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import DropdownContext from '@hooks/contexts/dropdownContext';
+import DropdownContext from '@hooks/contexts/Dropdown/dropdownContext';
 import Button from '@components/Dropdown/Button';
 import Text from '@components/Dropdown/Text';
 import Icon from '@components/Dropdown/Icon';
