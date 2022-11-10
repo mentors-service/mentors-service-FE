@@ -42,15 +42,7 @@ const Write = () => {
   };
 
   const onError = () => {
-    toast({
-      type: 'ADD',
-      payload: {
-        id: Date.now() + Math.random(),
-        message: '입력란을 올바르게 작성해주세요.',
-        type: 'ERROR',
-        time: 3000,
-      },
-    });
+    toast({ type: 'ADD', payload: { message: '입력란을 올바르게 작성해주세요.', type: 'ERROR', time: 3000 } });
   };
 
   return (

@@ -1,6 +1,10 @@
+import { TStatus } from 'types/common';
+
+export type TCase = 'ADD' | 'DELETE';
+
 export interface Istate {
-  id: number;
   message: string;
-  type: 'SUCCESS' | 'ERROR' | 'INFO';
+  type: TStatus;
+  id?: number;
   time?: number;
 }
