@@ -58,11 +58,12 @@ export const SliderStyleBar = styled.div<{ value: number }>`
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to right,
-    ${({ theme }) => theme.colors.$secondary} 0,
-    ${({ theme }) => theme.colors.$secondary} ${({ value }) => `${value * 10}%`},
-    ${({ theme }) => theme.colors.$gray} ${({ value }) => `${value * 10}%`},
-    ${({ theme }) => theme.colors.$gray} 100%
+    ${({ theme, value }) =>
+      `to right,
+      ${theme.colors.$secondary} 0,
+      ${theme.colors.$secondary} ${value * 10}%,
+      ${theme.colors.$gray} ${value * 10}%,
+      ${theme.colors.$gray} 100%`}
   );
   border-radius: 10px;
 `;

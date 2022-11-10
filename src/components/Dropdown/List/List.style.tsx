@@ -4,13 +4,13 @@ import styled from 'styled-components';
 export const List = styled.ul<{ $active: boolean }>`
   position: absolute;
   bottom: -100px;
-  margin-top: 20px;
   z-index: 10;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-width: 120px;
   padding: 5px 10px;
+  margin-top: 20px;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
   opacity: ${({ $active }) => ($active ? '100%' : '0')};

@@ -6,19 +6,18 @@ import { TStatus } from 'types/common';
 export const Item = styled.li``;
 
 export const Button = styled.button<{ $status: 'SUCCESS' | 'ERROR' | 'INFO' }>`
-  height: 50px;
-  min-width: 200px;
   position: relative;
-
-  padding: 5px 10px;
-  text-align: left;
   display: flex;
   flex-direction: column;
+  min-width: 200px;
+  height: 50px;
+  padding: 5px 10px;
   overflow: hidden;
+  text-align: left;
   border-radius: 10px;
 
   ${({ $status }) => StatusBackgroundColor({ $status })}
-  ${FadeInDownBig};
+  ${FadeInDownBig}
 `;
 
 export const Text = styled.span`
@@ -30,7 +29,6 @@ export const TimerBar = styled.div<{ $status: 'SUCCESS' | 'ERROR' | 'INFO'; $isP
   bottom: 0;
   left: 0;
   height: 10px;
-
   background-color: ${({ $status, $isPaused, theme }) => {
     const start: Record<TStatus, string> = {
       INFO: theme.colors.$primary_dark,

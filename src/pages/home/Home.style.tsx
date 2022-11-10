@@ -88,8 +88,8 @@ export const ArticleCardItem = styled.li``;
 export const ArticleCardButton = styled.button`
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 10px;
+  width: 100%;
   padding: 10px;
   background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$white});
   border-radius: 10px;
