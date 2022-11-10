@@ -8,6 +8,7 @@
       "@hooks/*": ["./hooks/*"],
       "@utils/*": ["./utils/*"],
       "@styles/*": ["./styles/*"],
+      "@@types/*": ["./types/*"],
       "@home/*": ["./pages/home/*"],
       "@article/*": ["./pages/article/*"],
       "@profile/*": ["./pages/profile/*"],

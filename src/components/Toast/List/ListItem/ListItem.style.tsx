@@ -1,11 +1,11 @@
+import { TStatus } from '@@types/common';
 import { StatusBackgroundColor } from '@styles/custom/status';
 import { FadeInDownBig } from '@styles/effects/animations';
 import styled from 'styled-components';
-import { TStatus } from 'types/common';
 
 export const Item = styled.li``;
 
-export const Button = styled.button<{ $status: 'SUCCESS' | 'ERROR' | 'INFO' }>`
+export const Button = styled.button<{ $status: TStatus }>`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const Text = styled.span`
   color: ${({ theme }) => theme.colors.$white};
 `;
 
-export const TimerBar = styled.div<{ $status: 'SUCCESS' | 'ERROR' | 'INFO'; $isPaused: boolean }>`
+export const TimerBar = styled.div<{ $status: TStatus; $isPaused: boolean }>`
   position: absolute;
   bottom: 0;
   left: 0;

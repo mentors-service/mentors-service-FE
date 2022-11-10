@@ -1,7 +1,7 @@
 import ToastContext from '@hooks/contexts/Toast/toastContext';
 import { useReducer, useMemo } from 'react';
+import { Istate, TCase } from '@components/Toast/type';
 import List from './List';
-import { Istate, TCase } from './type';
 
 interface ToastProps {
   children: React.ReactNode;

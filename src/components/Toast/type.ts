@@ -1,4 +1,4 @@
-import { TStatus } from 'types/common';
+import { TStatus } from '@@types/common';
 
 export type TCase = 'ADD' | 'DELETE';
 

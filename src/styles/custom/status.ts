@@ -1,5 +1,5 @@
+import { TStatus } from '@@types/common';
 import { css } from 'styled-components';
-import { TStatus } from 'types/common';
 
 interface IStatus {
   $status: TStatus;
