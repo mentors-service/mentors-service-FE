@@ -1,11 +1,10 @@
 import * as S from './Article.style';
 import ArticleButton from './components/Button';
 import CommentList from './components/CommentList';
-import UserStatus from './components/UserStatus';
+import UserStatus from './components/UserInfo';
 
 const Article = () => {
-  const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '20221024' };
-
+  const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '2022-11-11 22:57:00' };
   return (
     <S.ArticleContainer>
       <S.ArticleWrapper>

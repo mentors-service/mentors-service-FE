@@ -1,6 +1,7 @@
-import UserStatus from '@article/components/UserStatus';
+import UserStatus from '@article/components/UserInfo';
 import { CommentData } from '@article/types';
 import { CommentIcon } from '@assets/svgs';
+import { Fragment } from 'react';
 import * as S from './CommentListItem.style';
 
 const CommentListItem = ({ creater, createdAt, content, childs }: CommentData) => {
@@ -18,7 +19,7 @@ const CommentListItem = ({ creater, createdAt, content, childs }: CommentData) =
 
       <S.ReplyComment>
         {childs.map((child) => (
-          <>
+          <Fragment key={child.id}>
             <div>
               <UserStatus creater={child.creater} createdAt={child.createdAt} />
               <button type='button'>
@@ -26,7 +27,7 @@ const CommentListItem = ({ creater, createdAt, content, childs }: CommentData) =
               </button>
             </div>
             <S.CommentContent>{child.content}</S.CommentContent>
-          </>
+          </Fragment>
         ))}
       </S.ReplyComment>
     </S.CommentsWrapper>
