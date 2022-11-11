@@ -1,5 +1,5 @@
-import { ProfileIcon, ScrapIcon } from '@assets/svgs';
 import * as S from './Article.style';
+import ArticleButton from './components/Button';
 import CommentList from './components/CommentList';
 import UserStatus from './components/UserStatus';
 
@@ -47,15 +47,8 @@ const Article = () => {
         </S.ArticleContent>
 
         <S.ScrapWrapper>
-          <S.ScrapButton>
-            <ScrapIcon width='20' height='20' />
-            <S.ScrapText>스크랩</S.ScrapText>
-          </S.ScrapButton>
-
-          <S.ApplyButton>
-            <ProfileIcon width='20' height='20' />
-            <S.ApplyText>1/5</S.ApplyText>
-          </S.ApplyButton>
+          <ArticleButton icon='scrap' text='스크랩' />
+          <ArticleButton icon='apply' text='1 / 5' />
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 

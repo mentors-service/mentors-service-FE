@@ -63,36 +63,6 @@ export const ScrapWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const ScrapButton = styled.button`
-  display: flex;
-  align-items: center;
-  height: 34px;
-  line-height: 15px;
-  padding: 5px 10px;
-  gap: 10px;
-  background: ${({ theme }) => theme.colors.$secondary};
-  border-radius: 10px;
-`;
-
-export const ScrapText = styled.span`
-  color: ${({ theme }) => theme.colors.$white};
-`;
-
-export const ApplyButton = styled.button`
-  display: flex;
-  align-items: center;
-  height: 34px;
-  line-height: 15px;
-  padding: 5px 10px;
-  gap: 10px;
-  background: ${({ theme }) => theme.colors.$secondary};
-  border-radius: 10px;
-`;
-
-export const ApplyText = styled.span`
-  color: ${({ theme }) => theme.colors.$white};
-`;
-
 export const TextareaWrapper = styled.div`
   position: relative;
 `;
