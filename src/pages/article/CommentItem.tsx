@@ -10,7 +10,7 @@ const CommentItem = ({ creater, createdAt, content, childs }: CommentData) => {
         <div>
           <UserStatus creater={creater} createdAt={createdAt} />
           <button type='button'>
-            <CommentIcon />
+            <CommentIcon width={20} height={20} />
           </button>
         </div>
         <S.CommentContent>{content}</S.CommentContent>
@@ -22,7 +22,7 @@ const CommentItem = ({ creater, createdAt, content, childs }: CommentData) => {
             <div>
               <UserStatus creater={child.creater} createdAt={child.createdAt} />
               <button type='button'>
-                <CommentIcon />
+                <CommentIcon width={20} height={20} />
               </button>
             </div>
             <S.CommentContent>{child.content}</S.CommentContent>
