@@ -4,45 +4,40 @@ import CommentList from './components/CommentList';
 import UserStatus from './components/UserStatus';
 
 const Article = () => {
-  const userStatusData = {
-    creater: {
-      img: 'val',
-      name: 'Name',
-    },
-    createdAt: '20221024',
-  };
+  const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '20221024' };
+
   return (
-    <S.ProfileWrapper>
+    <S.ArticleContainer>
       <S.ArticleWrapper>
-        <S.User>
+        <S.ArticleTopWrapper>
           <UserStatus creater={userStatusData.creater} createdAt={userStatusData.createdAt} />
-          <S.ProgressSpan>In Progress</S.ProgressSpan>
-        </S.User>
+          <S.ArticleStatus>In Progress</S.ArticleStatus>
+        </S.ArticleTopWrapper>
 
         <S.ArticleSection>
-          <S.Dl>
-            <div>
-              <S.Dt>제목</S.Dt>
-              <S.Dd>멘토링 모집</S.Dd>
-            </div>
+          <S.ArticleInfoList>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>제목</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>멘토링 모집</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Dt>장소</S.Dt>
-              <S.Dd>Seoul</S.Dd>
-            </div>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>장소</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>Seoul</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Dt>일정</S.Dt>
-              <S.Dd>2022.10.01 ~ 2022.10.01</S.Dd>
-            </div>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>일정</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>2022.10.01 ~ 2022.10.01</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Tag>태그</S.Tag>
-              <S.TagSpan>Java</S.TagSpan>
-              <S.TagSpan>React</S.TagSpan>
-              <S.TagSpan>Github</S.TagSpan>
-            </div>
-          </S.Dl>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>태그</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>Java</S.ArticleInfoContent>
+              <S.ArticleInfoContent>React</S.ArticleInfoContent>
+              <S.ArticleInfoContent>Github</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
+          </S.ArticleInfoList>
         </S.ArticleSection>
 
         <S.ArticleContent>
@@ -52,29 +47,25 @@ const Article = () => {
         </S.ArticleContent>
 
         <S.ScrapWrapper>
-          <S.Scrap>
-            <button type='button'>
-              <ScrapIcon width='20' height='20' />
-              <span>스크랩</span>
-            </button>
-          </S.Scrap>
+          <S.ScrapButton>
+            <ScrapIcon width='20' height='20' />
+            <S.ScrapText>스크랩</S.ScrapText>
+          </S.ScrapButton>
 
-          <S.PersonnelStatus>
-            <button type='button'>
-              <ProfileIcon width='20' height='20' />
-              <span> 1/5</span>
-            </button>
-          </S.PersonnelStatus>
+          <S.ApplyButton>
+            <ProfileIcon width='20' height='20' />
+            <S.ApplyText>1/5</S.ApplyText>
+          </S.ApplyButton>
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 
       <S.TextareaWrapper>
         <S.Textarea placeholder='Textarea Comment' />
-        <S.PostBtn type='submit'>Post</S.PostBtn>
+        <S.PostButton type='submit'>Post</S.PostButton>
       </S.TextareaWrapper>
 
       <CommentList />
-    </S.ProfileWrapper>
+    </S.ArticleContainer>
   );
 };
 

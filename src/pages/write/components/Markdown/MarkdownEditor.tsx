@@ -14,7 +14,6 @@ const MarkdownEditor = () => {
 };
 
 const Textarea = styled.textarea<{ value: string }>`
-  box-sizing: border-box;
   width: 100%;
   padding: 10px;
   border: 2px solid ${({ value, theme }) => (value ? theme.colors.$secondary : theme.colors.$gray)};

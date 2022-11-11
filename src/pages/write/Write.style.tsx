@@ -4,7 +4,7 @@ export const WriteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  padding: 25px 50px 0 50px;
+  padding: 25px 50px 0;
 `;
 
 export const SubmitButton = styled.button`

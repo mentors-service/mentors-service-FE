@@ -5,7 +5,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 25px 50px 0 50px;
+  padding: 25px 50px 0;
 `;
 
 export const SearchWrapper = styled.div`
@@ -32,7 +32,6 @@ export const SearchIcon = styled(Search)`
 `;
 
 export const SearchInput = styled.input`
-  box-sizing: border-box;
   width: 100%;
   padding: 5px 10px;
   padding-left: 34px;
@@ -91,7 +90,7 @@ export const ArticleCardButton = styled.button`
   gap: 10px;
   width: 100%;
   padding: 10px;
-  background: linear-gradient(${({ theme }) => theme.colors.$primary}, ${({ theme }) => theme.colors.$white});
+  background: linear-gradient(${({ theme }) => `${theme.colors.$primary}, ${theme.colors.$white}`});
   border-radius: 10px;
   transition: 0.3s;
 

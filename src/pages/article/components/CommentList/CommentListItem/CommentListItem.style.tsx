@@ -9,7 +9,7 @@ export const CommentsWrapper = styled.section`
 
 export const Comment = styled.article`
   padding: 10px;
-  background: linear-gradient(180deg, #ffffff 0%, #c6eefd 100%);
+  background: linear-gradient(${({ theme }) => theme.colors.$white}, ${({ theme }) => theme.colors.$primary});
   div {
     display: flex;
     justify-content: space-between;
