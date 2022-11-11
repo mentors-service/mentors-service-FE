@@ -1,9 +1,9 @@
+import UserStatus from '@article/components/UserStatus';
+import { CommentData } from '@article/types';
 import { CommentIcon } from '@assets/svgs';
-import { CommentData } from './types';
-import * as S from './CommentItem.style';
-import UserStatus from './UserStatus';
+import * as S from './CommentListItem.style';
 
-const CommentItem = ({ creater, createdAt, content, childs }: CommentData) => {
+const CommentListItem = ({ creater, createdAt, content, childs }: CommentData) => {
   return (
     <S.CommentsWrapper>
       <S.Comment>
@@ -33,4 +33,4 @@ const CommentItem = ({ creater, createdAt, content, childs }: CommentData) => {
   );
 };
 
-export default CommentItem;
+export default CommentListItem;

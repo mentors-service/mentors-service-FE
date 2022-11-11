@@ -1,7 +1,7 @@
 import { ProfileIcon, ScrapIcon } from '@assets/svgs';
 import * as S from './Article.style';
-import CommentList from './CommentList';
-import UserStatus from './UserStatus';
+import CommentList from './components/CommentList';
+import UserStatus from './components/UserStatus';
 
 const Article = () => {
   const userStatusData = {
