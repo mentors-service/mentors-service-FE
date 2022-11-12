@@ -2,12 +2,12 @@ import ProfileImg from '@assets/img/ProfileImg.png';
 import { dateFromNow } from '@utils/time';
 import * as S from './UserInfo.style';
 
-interface IUserInfoProps {
+interface UserInfoProps {
   creater: { img: string; name: string };
   createdAt: string;
 }
 
-const UserStatus = ({ creater, createdAt }: IUserInfoProps) => {
+const UserInfo = ({ creater, createdAt }: UserInfoProps) => {
   const dateText = dateFromNow(new Date(createdAt));
 
   return (
@@ -20,4 +20,4 @@ const UserStatus = ({ creater, createdAt }: IUserInfoProps) => {
   );
 };
 
-export default UserStatus;
+export default UserInfo;

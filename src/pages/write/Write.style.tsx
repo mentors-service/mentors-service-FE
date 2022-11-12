@@ -12,7 +12,7 @@ export const SubmitButton = styled.button`
   height: 34px;
   padding: 5px 10px;
   color: ${({ theme }) => theme.colors.$white};
-  background: ${({ theme }) => theme.colors.$secondary};
+  background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
 `;
 

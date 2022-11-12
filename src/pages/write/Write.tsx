@@ -11,7 +11,7 @@ import ImageUpload from '@write/components/Markdown/ImageUpload';
 import Result from '@write/components/Markdown/Result';
 import { numberCheck } from '@utils/formUtil';
 import useToast from '@hooks/contexts/Toast/useToast';
-import { IFormInput } from './types';
+import { TFormInput } from './types';
 import * as S from './Write.style';
 
 const Write = () => {
@@ -30,13 +30,13 @@ const Write = () => {
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm<IFormInput>();
+  } = useForm<TFormInput>();
 
   const { toast } = useToast();
 
   const sliderValue = watch('slider', '0');
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
+  const onSubmit: SubmitHandler<TFormInput> = (data: TFormInput) => {
     // navigate('/');
     // createMutaion.mutate();
   };

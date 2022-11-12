@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import CommentListItem from './CommentListItem';
+import * as S from './CommentList.style';
 
 const temp = [
   {
@@ -41,13 +42,12 @@ const CommentList = () => {
     commentsAPI();
   }, []);
 
-  console.log(temp);
   return (
-    <>
-      {temp.map((comment, index) => (
+    <S.CommentList>
+      {temp.map((comment) => (
         <CommentListItem {...comment} key={comment.id} />
       ))}
-    </>
+    </S.CommentList>
   );
 };
 

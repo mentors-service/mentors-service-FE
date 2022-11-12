@@ -1,10 +1,10 @@
-import { InputKeys } from '@write/types';
+import { TInputKeys } from '@write/types';
 import { useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 import * as S from './Input.style';
 
 interface WriteInputProps {
-  register: UseFormRegisterReturn<InputKeys>;
+  register: UseFormRegisterReturn<TInputKeys>;
   placeholder: string;
   isError: boolean;
 }

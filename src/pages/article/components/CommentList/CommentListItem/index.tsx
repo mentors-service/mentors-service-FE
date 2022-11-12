@@ -1,31 +1,32 @@
-import UserStatus from '@article/components/UserInfo';
-import { CommentData } from '@article/types';
+import UserInfo from '@article/components/UserInfo';
+import { ICommentData } from '@article/types';
 import { CommentIcon } from '@assets/svgs';
 import { Fragment } from 'react';
 import * as S from './CommentListItem.style';
 
-const CommentListItem = ({ creater, createdAt, content, childs }: CommentData) => {
+const CommentListItem = ({ creater, createdAt, content, childs }: ICommentData) => {
   return (
     <S.CommentsWrapper>
       <S.Comment>
-        <div>
-          <UserStatus creater={creater} createdAt={createdAt} />
-          <button type='button'>
+        <S.CommentTopWrapper>
+          <UserInfo creater={creater} createdAt={createdAt} />
+          <S.ReplyCommentButton>
             <CommentIcon width={20} height={20} />
-          </button>
-        </div>
+          </S.ReplyCommentButton>
+        </S.CommentTopWrapper>
+
         <S.CommentContent>{content}</S.CommentContent>
       </S.Comment>
 
       <S.ReplyComment>
         {childs.map((child) => (
           <Fragment key={child.id}>
-            <div>
-              <UserStatus creater={child.creater} createdAt={child.createdAt} />
-              <button type='button'>
+            <S.CommentTopWrapper>
+              <UserInfo creater={child.creater} createdAt={child.createdAt} />
+              <S.ReplyCommentButton>
                 <CommentIcon width={20} height={20} />
-              </button>
-            </div>
+              </S.ReplyCommentButton>
+            </S.CommentTopWrapper>
             <S.CommentContent>{child.content}</S.CommentContent>
           </Fragment>
         ))}

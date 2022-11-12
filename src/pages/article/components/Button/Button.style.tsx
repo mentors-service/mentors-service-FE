@@ -7,8 +7,13 @@ export const Button = styled.button`
   line-height: 15px;
   padding: 5px 10px;
   gap: 10px;
-  background: ${({ theme }) => theme.colors.$secondary};
+  background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;
 
 export const Text = styled.span`
