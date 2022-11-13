@@ -8,7 +8,7 @@ interface ToastProviderProps {
 }
 
 const ToastProvider = ({ children }: ToastProviderProps) => {
-  const [selector, toast] = useReducer((state: Istate[], action: { type: TCase; payload: Istate }) => {
+  const [selector, dispatch] = useReducer((state: Istate[], action: { type: TCase; payload: Istate }) => {
     const type: Record<TCase, Istate[]> = {
       ADD: [...state, { id: Date.now() + Math.random(), ...action.payload }],
       DELETE: state.filter((item) => item.id !== action.payload.id),
@@ -17,7 +17,7 @@ const ToastProvider = ({ children }: ToastProviderProps) => {
     return type[action.type];
   }, []);
 
-  const contextValue = useMemo(() => ({ toast }), []);
+  const contextValue = useMemo(() => ({ toast: dispatch }), []);
 
   return (
     <ToastContext.Provider value={contextValue}>

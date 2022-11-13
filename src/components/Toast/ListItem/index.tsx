@@ -8,7 +8,7 @@ interface ItemProps {
 }
 
 const ListItem = ({ item }: ItemProps) => {
-  const { message, time, type } = item;
+  const { message, time, status } = item;
 
   const [isPaused, setIsPaused] = useState(false);
   const [timer, setTimer] = useState(0);
@@ -47,11 +47,16 @@ const ListItem = ({ item }: ItemProps) => {
 
   return (
     <S.Item>
-      <S.Button $status={type} onClick={handleClick} onMouseEnter={handlePauseToggle} onMouseLeave={handlePauseToggle}>
+      <S.Button
+        onMouseEnter={handlePauseToggle}
+        onMouseLeave={handlePauseToggle}
+        onClick={handleClick}
+        $status={status}
+      >
         <S.Text>{message}</S.Text>
 
         {time && (
-          <S.TimerBar $status={type} $isPaused={isPaused} style={{ width: `calc(100% * ${1 - timer / time})` }} />
+          <S.TimerBar $isPaused={isPaused} style={{ width: `calc(100% * ${1 - timer / time})` }} $status={status} />
         )}
       </S.Button>
     </S.Item>

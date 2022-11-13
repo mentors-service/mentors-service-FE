@@ -38,7 +38,7 @@ const RouteWithCondition = ({ isView }: RouteWithConditionProps) => {
   useEffect(() => {
     if (isView) return;
 
-    toast({ type: 'ADD', payload: { message: '회원만 이용 가능합니다!', type: 'ERROR', time: 3000 } });
+    toast({ type: 'ADD', payload: { message: '회원만 이용 가능합니다!', status: 'ERROR', time: 3000 } });
   }, [isView, toast]);
 
   if (!isView) return <Navigate to='/' />;
