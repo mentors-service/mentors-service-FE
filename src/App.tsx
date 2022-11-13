@@ -13,7 +13,7 @@ const App = () => {
           <Route path='write' element={<Write />} />
         </Route>
 
-        <Route path='oauth/kakao' element={<KakaoLogin />} />
+        <Route path='oauth2/kakao' element={<KakaoLogin />} />
       </Route>
     </Routes>
   );
