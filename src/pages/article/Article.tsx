@@ -54,14 +54,14 @@ const Article = () => {
         <S.ScrapWrapper>
           <S.Scrap>
             <button type='button'>
-              <ScrapIcon />
+              <ScrapIcon width={24} height={24} />
               <span>스크랩</span>
             </button>
           </S.Scrap>
 
           <S.PersonnelStatus>
             <button type='button'>
-              <ProfileIcon />
+              <ProfileIcon width={24} height={24} />
               <span> 1/5</span>
             </button>
           </S.PersonnelStatus>

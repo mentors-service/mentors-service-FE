@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Toast from '@components/Toast';
+import AuthProvider from '@providers/AuthProvider';
+import ToastProvider from '@providers/ToastProvider';
 import App from './App';
 import { store } from './store/store';
 
@@ -19,11 +20,13 @@ root.render(
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <Toast>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </Toast>
+          <AuthProvider>
+            <ToastProvider>
+              <BrowserRouter>
+                <App />
+              </BrowserRouter>
+            </ToastProvider>
+          </AuthProvider>
         </Provider>
       </QueryClientProvider>
     </ThemeProvider>

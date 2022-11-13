@@ -1,25 +1,25 @@
-import { postAuthCode } from '@api/auth';
-import { useMutation } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const KakaoLogin = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  // const authCodeMutation = useMutation((code: string) => postAuthCode(code));
+
+  const authToken = searchParams.get('token')!;
 
   useEffect(() => {
-    const authToken = searchParams.get('token')!;
+    if (!authToken) return;
+
     window.localStorage.setItem('token', authToken);
+    console.log(222);
+  }, [authToken]);
 
+  useEffect(() => {
+    console.log(333);
     navigate('/');
-  }, [searchParams, navigate]);
+  }, [navigate]);
 
-  return (
-    <div>
-      <div>로그인 진행중..</div>
-    </div>
-  );
+  return null;
 };
 
 export default KakaoLogin;

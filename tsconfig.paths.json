@@ -8,6 +8,7 @@
       "@lib/*": ["./lib/*"],
       "@hooks/*": ["./hooks/*"],
       "@utils/*": ["./utils/*"],
+      "@providers/*": ["./providers/*"],
       "@styles/*": ["./styles/*"],
       "@@types/*": ["./types/*"],
       "@home/*": ["./pages/home/*"],
