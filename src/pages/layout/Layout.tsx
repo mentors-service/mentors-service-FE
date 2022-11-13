@@ -1,4 +1,4 @@
-import { GroupIcon, LogoutIcon, ProfileIcon } from '@assets/svgs';
+import Header from '@components/Header';
 import { Outlet } from 'react-router-dom';
 
 const Layout = () => {
@@ -29,14 +29,13 @@ const Layout = () => {
         로컬 스토리지 제거
       </button>
 
-      <ProfileIcon />
-      <GroupIcon />
-      <LogoutIcon />
+      <Header />
+
       <main>
         <Outlet />
       </main>
 
-      <footer>footer</footer>
+      {/* <footer>footer</footer> */}
     </div>
   );
 };

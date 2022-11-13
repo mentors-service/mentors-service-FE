@@ -14,18 +14,19 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, textarea {
 	padding: 0;
 	margin: 0;
 	font: inherit;
-	font-size: 100%;
-	vertical-align: baseline;
-	border: 0;
 	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
-	color: #0D0D0D
+	font-size: 100%;
+	color: #0d0d0d;
+	vertical-align: baseline;
+	border: 0
 }
 input,
-button{ padding:0; overflow:visible; cursor:pointer;
+button{ padding:0; overflow:visible;
+font-family: 'Open Sans', 'Noto Sans KR', sans-serif; cursor:pointer;
 background: inherit ; border:none; border-radius:0; box-shadow:none;
 -webkit-apperance : none;}
 /* HTML5 display-role reset for older browsers */
@@ -33,7 +34,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+body {  
 	line-height: 1;
 }
 ol, ul {
