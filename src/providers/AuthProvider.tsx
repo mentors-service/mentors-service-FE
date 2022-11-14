@@ -1,5 +1,5 @@
 import AuthContext from '@hooks/contexts/Auth/authContext';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -8,7 +8,17 @@ interface AuthProviderProps {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
 
-  const contextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn }), [isLoggedIn]);
+  const login = (token: string) => {
+    setIsLoggedIn(false);
+    localStorage.setItem('token', token);
+  };
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem('token');
+  };
+
+  const contextValue = useMemo(() => ({ isLoggedIn, setIsLoggedIn, login, logout }), [isLoggedIn]);
 
   return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };

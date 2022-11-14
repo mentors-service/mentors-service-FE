@@ -21,10 +21,6 @@ const Write = () => {
 
   const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
 
-  const createMutaion = useMutation(createArticle, {
-    onError: (error) => {},
-  });
-
   const {
     register,
     handleSubmit,
@@ -35,6 +31,10 @@ const Write = () => {
   const { toast } = useToast();
 
   const sliderValue = watch('slider', '0');
+
+  const createMutaion = useMutation(createArticle, {
+    onError: (error) => {},
+  });
 
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     // navigate('/');

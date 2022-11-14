@@ -1,15 +1,11 @@
 import useAuth from '@hooks/contexts/Auth/useAuth';
 import useToast from '@hooks/contexts/Toast/useToast';
-import useUserInfo from '@hooks/contexts/UserInfo/useUserInfo';
 import { Article, Home, KakaoLogin, Layout, Me, Profile, Write } from '@pages';
 import { useEffect } from 'react';
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 
 const App = () => {
   const { isLoggedIn } = useAuth();
-  const { userInfo } = useUserInfo();
-
-  console.log(isLoggedIn, userInfo);
 
   return (
     <Routes>

@@ -1,18 +1,48 @@
+import { ITemp } from '@@types/user';
+import { patchUserInfo } from '@api/user';
+import useAuth from '@hooks/contexts/Auth/useAuth';
 import useUserInfo from '@hooks/contexts/UserInfo/useUserInfo';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
 import MeInput from './components/Input';
 import MeTab from './components/tab';
 import * as S from './Me.style';
 
 const Me = () => {
+  const queryClient = useQueryClient();
+  const { logout } = useAuth();
   const { userInfo } = useUserInfo();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submit');
+  const { register, handleSubmit, reset } = useForm<ITemp>();
+
+  const { mutate: userInfoMutate } = useMutation(patchUserInfo, {
+    onMutate: async (data) => {
+      await queryClient.cancelQueries(['userInfo']);
+
+      queryClient.setQueryData(['userInfo'], () => data);
+
+      return data;
+    },
+    onSuccess: () => {
+      reset();
+    },
+    onError: () => {
+      logout();
+    },
+  });
+
+  const handleClick = () => {
+    console.log('button');
   };
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('button click');
+  const onsubmit = (data: ITemp) => {
+    userInfoMutate(data);
+
+    console.log('submit', data);
+  };
+
+  const onError = () => {
+    console.log('nickname null error');
   };
 
   console.log(userInfo);
@@ -26,10 +56,10 @@ const Me = () => {
           <S.ImageChangeButton onClick={handleClick}>이미지 변경</S.ImageChangeButton>
         </S.ImageWrapper>
 
-        <S.MyProfileForm onSubmit={handleSubmit}>
+        <S.MyProfileForm onSubmit={handleSubmit(onsubmit, onError)}>
           <S.InputWrapper>
-            <MeInput placeholder={userInfo.nickname} />
-            <MeInput placeholder={userInfo.description ?? '나를 소개해주세요.'} />
+            <MeInput register={register('nickname')} placeholder={userInfo.nickname} />
+            <MeInput register={register('description')} placeholder={userInfo.description || '나를 소개해주세요.'} />
           </S.InputWrapper>
 
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>

@@ -5,11 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import * as S from './Header.style';
 
 const Header = () => {
-  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleClickLogo = () => {
-    navigate('');
+    navigate('/');
   };
 
   const handelClickProfile = () => {
@@ -21,10 +21,7 @@ const Header = () => {
   };
 
   const handleClickLogout = () => {
-    setIsLoggedIn(false);
-
-    window.localStorage.removeItem('token');
-    window.location.reload();
+    logout();
   };
 
   return (

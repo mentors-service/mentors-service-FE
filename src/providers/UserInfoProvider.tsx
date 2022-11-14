@@ -19,7 +19,7 @@ const UserInfoProvider = ({ children }: UserInfoProviderProps) => {
       console.log(err);
       setIsLoggedIn(false);
     },
-    initialData: { nickname: '', description: '' },
+    initialData: { nickname: '', description: '', article: [] },
   });
 
   const contextValue = useMemo(() => ({ userInfo }), [userInfo]);

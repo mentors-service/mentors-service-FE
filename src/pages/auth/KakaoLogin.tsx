@@ -6,16 +6,15 @@ const KakaoLogin = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
 
-  const { setIsLoggedIn } = useAuth();
+  const { login } = useAuth();
 
   const authToken = searchParams.get('token')!;
 
   useEffect(() => {
     if (!authToken) return;
 
-    setIsLoggedIn(true);
-    window.localStorage.setItem('token', authToken);
-  }, [authToken, setIsLoggedIn]);
+    login(authToken);
+  }, [authToken, login]);
 
   useEffect(() => {
     navigate('/');
