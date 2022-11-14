@@ -1,3 +1,4 @@
+import useToast from '@hooks/contexts/Toast/useToast';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as S from './Article.style';
@@ -7,6 +8,8 @@ import UserInfo from './components/UserInfo';
 
 const Article = () => {
   const [commentToggle, setCommentToggle] = useState(false);
+
+  const { toast } = useToast();
 
   const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '2022-11-11 22:57:00' };
 
@@ -20,7 +23,9 @@ const Article = () => {
     console.log(data);
   };
 
-  const onError = () => {};
+  const onError = () => {
+    toast({ type: 'ADD', payload: { type: 'ERROR', message: '댓글을 입력해주세요.', time: 3000 } });
+  };
 
   const handleSelect = () => {
     setCommentToggle(true);
