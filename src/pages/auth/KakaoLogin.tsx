@@ -9,6 +9,7 @@ const KakaoLogin = () => {
   const { login } = useAuth();
 
   const authToken = searchParams.get('token')!;
+  const prevPath = sessionStorage.getItem('prevPath')!;
 
   useEffect(() => {
     if (!authToken) return;
@@ -17,8 +18,9 @@ const KakaoLogin = () => {
   }, [authToken, login]);
 
   useEffect(() => {
-    navigate('/');
-  }, [navigate]);
+    navigate(prevPath ?? '/');
+    sessionStorage.removeItem('prevPath');
+  }, [navigate, prevPath]);
 
   return null;
 };

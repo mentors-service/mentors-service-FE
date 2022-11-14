@@ -1,12 +1,13 @@
 import { LogoutIcon, ProfileIcon } from '@assets/svgs';
 import useAuth from '@hooks/contexts/Auth/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as S from './Header.style';
 
 const Header = () => {
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleClickLogo = () => {
     navigate('/');
@@ -17,6 +18,7 @@ const Header = () => {
   };
 
   const handleClickLogin = () => {
+    sessionStorage.setItem('prevPath', location.pathname);
     window.location.href = process.env.REACT_APP_KAKAO_OAUTH_URL!;
   };
 
