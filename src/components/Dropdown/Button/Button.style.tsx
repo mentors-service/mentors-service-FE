@@ -11,4 +11,8 @@ export const Button = styled.button`
   margin-right: auto;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;

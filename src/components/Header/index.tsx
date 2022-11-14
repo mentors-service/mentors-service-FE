@@ -1,11 +1,11 @@
 import { LogoutIcon, ProfileIcon } from '@assets/svgs';
-import { checkIsLoggedIn } from '@lib/protectRoute';
+import useAuth from '@hooks/contexts/Auth/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 import * as S from './Header.style';
 
 const Header = () => {
-  const isLoggedIn = checkIsLoggedIn();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
   const navigate = useNavigate();
 
   const handleClickLogo = () => {
@@ -21,6 +21,8 @@ const Header = () => {
   };
 
   const handleClickLogout = () => {
+    setIsLoggedIn(false);
+
     window.localStorage.removeItem('token');
     window.location.reload();
   };

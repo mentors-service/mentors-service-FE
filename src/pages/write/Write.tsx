@@ -28,8 +28,8 @@ const Write = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     watch,
+    formState: { errors },
   } = useForm<IFormInput>();
 
   const { toast } = useToast();

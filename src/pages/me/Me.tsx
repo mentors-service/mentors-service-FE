@@ -1,8 +1,11 @@
+import useUserInfo from '@hooks/contexts/UserInfo/useUserInfo';
 import MeInput from './components/Input';
 import MeTab from './components/tab';
 import * as S from './Me.style';
 
 const Me = () => {
+  const { userInfo } = useUserInfo();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log('submit');
@@ -11,6 +14,8 @@ const Me = () => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     console.log('button click');
   };
+
+  console.log(userInfo);
 
   return (
     <S.MeContainer>
@@ -23,8 +28,8 @@ const Me = () => {
 
         <S.MyProfileForm onSubmit={handleSubmit}>
           <S.InputWrapper>
-            <MeInput placeholder='Name' />
-            <MeInput placeholder='Description' />
+            <MeInput placeholder={userInfo.nickname} />
+            <MeInput placeholder={userInfo.description ?? '나를 소개해주세요.'} />
           </S.InputWrapper>
 
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>

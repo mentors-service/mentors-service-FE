@@ -28,6 +28,10 @@ export const HeaderButton = styled.button`
   padding: 5px 10px;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;
 
 export const HeaderButtonText = styled.span`
