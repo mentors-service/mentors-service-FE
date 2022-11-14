@@ -1,4 +1,4 @@
-import ProfileImg from '@assets/img/ProfileImg.png';
+import { ProfileImgIcon } from '@assets/svgs';
 import * as S from './UserStatus.style';
 
 interface IUserStatusProps {
@@ -12,14 +12,7 @@ interface IUserStatusProps {
 const UserStatus = ({ creater, createdAt }: IUserStatusProps) => {
   return (
     <S.UserStatusWrapper>
-      <img
-        src={ProfileImg}
-        alt=''
-        style={{
-          width: '25px',
-          height: '25px',
-        }}
-      />
+      <ProfileImgIcon width='25' height='25' />
       <S.Name>{creater.name}</S.Name>
       <S.ActivityTime>{createdAt}</S.ActivityTime>
     </S.UserStatusWrapper>
