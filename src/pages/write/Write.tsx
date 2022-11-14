@@ -19,12 +19,6 @@ const Write = () => {
 
   const navigate = useNavigate();
 
-  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
-
-  const createMutaion = useMutation(createArticle, {
-    onError: (error) => {},
-  });
-
   const {
     register,
     handleSubmit,
@@ -36,14 +30,18 @@ const Write = () => {
 
   const sliderValue = watch('slider', '0');
 
+  const createMutaion = useMutation(createArticle, { onError: (error) => {} });
+
   const onSubmit: SubmitHandler<TFormInput> = (data: TFormInput) => {
-    // navigate('/');
+    console.log({ data, content: markdownText });
     // createMutaion.mutate();
   };
 
   const onError = () => {
     toast({ type: 'ADD', payload: { message: '입력란을 올바르게 작성해주세요.', type: 'ERROR', time: 3000 } });
   };
+
+  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>

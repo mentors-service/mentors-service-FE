@@ -63,15 +63,19 @@ export const ScrapWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const TextareaWrapper = styled.div`
+export const CommentFormWrapper = styled.div`
   position: relative;
 `;
 
-export const Textarea = styled.textarea`
+export const CommentForm = styled.form``;
+
+export const Textarea = styled.textarea<{ $toggle: boolean }>`
   width: 100%;
   height: 75px;
   padding: 10px;
-  border: 2px solid ${({ theme }) => theme.colors.$gray};
+  transition: 0.3s;
+  border-radius: 10px;
+  border: 2px solid ${({ theme, $toggle }) => ($toggle ? theme.colors.$primary : theme.colors.$gray)};
 `;
 
 export const PostButton = styled.button`

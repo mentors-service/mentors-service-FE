@@ -1,10 +1,34 @@
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import * as S from './Article.style';
 import ArticleButton from './components/Button';
 import CommentList from './components/CommentList';
 import UserInfo from './components/UserInfo';
 
 const Article = () => {
+  const [commentToggle, setCommentToggle] = useState(false);
+
   const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '2022-11-11 22:57:00' };
+
+  const { register, handleSubmit } = useForm<{ comment: string }>();
+
+  const handleClick = () => {
+    console.log('button click');
+  };
+
+  const onSubmit = (data: { comment: string }) => {
+    console.log(data);
+  };
+
+  const onError = () => {};
+
+  const handleSelect = () => {
+    setCommentToggle(true);
+  };
+
+  const handleBlur = () => {
+    setCommentToggle(false);
+  };
 
   return (
     <S.ArticleContainer>
@@ -47,15 +71,23 @@ const Article = () => {
         </S.ArticleContent>
 
         <S.ScrapWrapper>
-          <ArticleButton icon='scrap' text='스크랩' />
-          <ArticleButton icon='apply' text='1 / 5' />
+          <ArticleButton icon='scrap' text='스크랩' onClick={handleClick} />
+          <ArticleButton icon='apply' text='1 / 5' onClick={handleClick} />
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 
-      <S.TextareaWrapper>
-        <S.Textarea placeholder='Textarea Comment' />
-        <S.PostButton type='submit'>Post</S.PostButton>
-      </S.TextareaWrapper>
+      <S.CommentFormWrapper>
+        <S.CommentForm onSubmit={handleSubmit(onSubmit, onError)}>
+          <S.Textarea
+            {...register('comment', { required: true })}
+            onSelect={handleSelect}
+            onBlur={handleBlur}
+            placeholder='Textarea Comment'
+            $toggle={commentToggle}
+          />
+          <S.PostButton>Post</S.PostButton>
+        </S.CommentForm>
+      </S.CommentFormWrapper>
 
       <CommentList />
     </S.ArticleContainer>
