@@ -5,7 +5,6 @@ export const List = styled.ul<{ $active: boolean }>`
   position: absolute;
   bottom: -100px;
   z-index: 10;
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-width: 120px;

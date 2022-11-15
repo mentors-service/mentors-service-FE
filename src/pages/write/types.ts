@@ -1,3 +1,3 @@
-export type InputKeys = 'title' | 'place' | 'tag' | 'schedule' | 'slider';
+export type TInputKeys = 'title' | 'place' | 'tag' | 'schedule' | 'slider' | 'content';
 
-export type IFormInput = Record<InputKeys, string>;
+export type TFormInput = Record<TInputKeys, string>;

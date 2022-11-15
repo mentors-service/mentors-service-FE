@@ -8,11 +8,11 @@ const Header = () => {
 
       <S.ButtonWrapper>
         <S.HeaderButton>
-          <ProfileIcon />
+          <ProfileIcon width='24' height='24' />
         </S.HeaderButton>
 
         <S.HeaderButton>
-          <LogoutIcon />
+          <LogoutIcon width='24' height='24' />
         </S.HeaderButton>
 
         <S.HeaderButton>

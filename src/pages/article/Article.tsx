@@ -1,48 +1,72 @@
-import { ProfileIcon, ScrapIcon } from '@assets/svgs';
+import useToast from '@hooks/contexts/Toast/useToast';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import * as S from './Article.style';
-import CommentList from './CommentList';
-import UserStatus from './UserStatus';
+import ArticleButton from './components/Button';
+import CommentList from './components/CommentList';
+import UserInfo from './components/UserInfo';
 
 const Article = () => {
-  const userStatusData = {
-    creater: {
-      img: 'val',
-      name: 'Name',
-    },
-    createdAt: '20221024',
+  const [commentToggle, setCommentToggle] = useState(false);
+
+  const { toast } = useToast();
+
+  const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '2022-11-11 22:57:00' };
+
+  const { register, handleSubmit } = useForm<{ comment: string }>();
+
+  const handleClick = () => {
+    console.log('button click');
   };
+
+  const onSubmit = (data: { comment: string }) => {
+    console.log(data);
+  };
+
+  const onError = () => {
+    toast({ type: 'ADD', payload: { type: 'ERROR', message: '댓글을 입력해주세요.', time: 3000 } });
+  };
+
+  const handleSelect = () => {
+    setCommentToggle(true);
+  };
+
+  const handleBlur = () => {
+    setCommentToggle(false);
+  };
+
   return (
-    <S.ProfileWrapper>
+    <S.ArticleContainer>
       <S.ArticleWrapper>
-        <S.User>
-          <UserStatus creater={userStatusData.creater} createdAt={userStatusData.createdAt} />
-          <S.ProgressSpan>In Progress</S.ProgressSpan>
-        </S.User>
+        <S.ArticleTopWrapper>
+          <UserInfo creater={userStatusData.creater} createdAt={userStatusData.createdAt} />
+          <S.ArticleStatus>In Progress</S.ArticleStatus>
+        </S.ArticleTopWrapper>
 
         <S.ArticleSection>
-          <S.Dl>
-            <div>
-              <S.Dt>제목</S.Dt>
-              <S.Dd>멘토링 모집</S.Dd>
-            </div>
+          <S.ArticleInfoList>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>제목</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>멘토링 모집</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Dt>장소</S.Dt>
-              <S.Dd>Seoul</S.Dd>
-            </div>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>장소</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>Seoul</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Dt>일정</S.Dt>
-              <S.Dd>2022.10.01 ~ 2022.10.01</S.Dd>
-            </div>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>일정</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>2022.10.01 ~ 2022.10.01</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
 
-            <div>
-              <S.Tag>태그</S.Tag>
-              <S.TagSpan>Java</S.TagSpan>
-              <S.TagSpan>React</S.TagSpan>
-              <S.TagSpan>Github</S.TagSpan>
-            </div>
-          </S.Dl>
+            <S.ArticleInfoWrapper>
+              <S.ArticleInfoTitle>태그</S.ArticleInfoTitle>
+              <S.ArticleInfoContent>Java</S.ArticleInfoContent>
+              <S.ArticleInfoContent>React</S.ArticleInfoContent>
+              <S.ArticleInfoContent>Github</S.ArticleInfoContent>
+            </S.ArticleInfoWrapper>
+          </S.ArticleInfoList>
         </S.ArticleSection>
 
         <S.ArticleContent>
@@ -52,29 +76,26 @@ const Article = () => {
         </S.ArticleContent>
 
         <S.ScrapWrapper>
-          <S.Scrap>
-            <button type='button'>
-              <ScrapIcon />
-              <span>스크랩</span>
-            </button>
-          </S.Scrap>
-
-          <S.PersonnelStatus>
-            <button type='button'>
-              <ProfileIcon />
-              <span> 1/5</span>
-            </button>
-          </S.PersonnelStatus>
+          <ArticleButton icon='scrap' text='스크랩' onClick={handleClick} />
+          <ArticleButton icon='apply' text='1 / 5' onClick={handleClick} />
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 
-      <S.TextareaWrapper>
-        <S.Textarea placeholder='Textarea Comment' />
-        <S.PostBtn type='submit'>Post</S.PostBtn>
-      </S.TextareaWrapper>
+      <S.CommentFormWrapper>
+        <S.CommentForm onSubmit={handleSubmit(onSubmit, onError)}>
+          <S.Textarea
+            {...register('comment', { required: true })}
+            onSelect={handleSelect}
+            onBlur={handleBlur}
+            placeholder='Textarea Comment'
+            $toggle={commentToggle}
+          />
+          <S.PostButton>Post</S.PostButton>
+        </S.CommentForm>
+      </S.CommentFormWrapper>
 
       <CommentList />
-    </S.ProfileWrapper>
+    </S.ArticleContainer>
   );
 };
 

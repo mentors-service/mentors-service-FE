@@ -1,9 +1,7 @@
-export interface CommentData {
-  creater: {
-    img: string;
-    name: string;
-  };
+export interface ICommentData {
+  id: number;
+  creater: { img: string; name: string };
   createdAt: string;
   content: string;
-  childs: CommentData[];
+  childs: ICommentData[];
 }

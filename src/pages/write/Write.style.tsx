@@ -4,7 +4,7 @@ export const WriteWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  padding: 25px 50px 0 50px;
+  padding: 25px 50px 0;
 `;
 
 export const SubmitButton = styled.button`
@@ -12,7 +12,7 @@ export const SubmitButton = styled.button`
   height: 34px;
   padding: 5px 10px;
   color: ${({ theme }) => theme.colors.$white};
-  background: ${({ theme }) => theme.colors.$secondary};
+  background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
 `;
 
