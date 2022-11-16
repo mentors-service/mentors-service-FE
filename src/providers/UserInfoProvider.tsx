@@ -9,17 +9,16 @@ interface UserInfoProviderProps {
 }
 
 const UserInfoProvider = ({ children }: UserInfoProviderProps) => {
-  const { setIsLoggedIn } = useAuth();
+  const { logout } = useAuth();
 
   const { data: userInfo } = useQuery(['userInfo'], getUserInfo, {
-    onSuccess: () => {
-      setIsLoggedIn(true);
-    },
+    onSuccess: () => {},
     onError: (err) => {
       console.log(err);
-      setIsLoggedIn(false);
+      logout();
     },
     initialData: { nickname: '', description: '', article: [] },
+    retry: false,
   });
 
   const contextValue = useMemo(() => ({ userInfo }), [userInfo]);
