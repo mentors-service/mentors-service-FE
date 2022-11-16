@@ -1,4 +1,3 @@
-import ProfileImg from '@assets/img/ProfileImg.png';
 import { dateFromNow } from '@utils/time';
 import * as S from './UserInfo.style';
 
@@ -12,7 +11,7 @@ const UserInfo = ({ creater, createdAt }: UserInfoProps) => {
 
   return (
     <S.UserInfoWrapper>
-      <img src={ProfileImg} alt='' style={{ width: '25px', height: '25px' }} />
+      <div style={{ width: '25px', height: '25px', background: '#EBEBEB', borderRadius: '100%' }} />
       <S.UserName>{creater.name}</S.UserName>
 
       <S.CreatedAt>{dateText}</S.CreatedAt>
