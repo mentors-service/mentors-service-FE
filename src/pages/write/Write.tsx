@@ -11,7 +11,7 @@ import ImageUpload from '@write/components/Markdown/ImageUpload';
 import Result from '@write/components/Markdown/Result';
 import { numberCheck } from '@utils/formUtil';
 import useToast from '@hooks/contexts/Toast/useToast';
-import { IFormInput } from './types';
+import { TFormInput } from './types';
 import * as S from './Write.style';
 
 const Write = () => {
@@ -19,31 +19,29 @@ const Write = () => {
 
   const navigate = useNavigate();
 
-  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
-
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<TFormInput>();
 
   const { toast } = useToast();
 
   const sliderValue = watch('slider', '0');
 
-  const createMutaion = useMutation(createArticle, {
-    onError: (error) => {},
-  });
+  const createMutaion = useMutation(createArticle, { onError: (error) => {} });
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
-    // navigate('/');
+  const onSubmit: SubmitHandler<TFormInput> = (data: TFormInput) => {
+    console.log({ data, content: markdownText });
     // createMutaion.mutate();
   };
 
   const onError = () => {
     toast({ type: 'ADD', payload: { message: '입력란을 올바르게 작성해주세요.', status: 'ERROR', time: 3000 } });
   };
+
+  const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit, onError)}>

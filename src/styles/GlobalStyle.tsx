@@ -14,15 +14,17 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video, textarea {
+time, mark, audio, video, textarea, input {
 	padding: 0;
 	margin: 0;
 	font: inherit;
+  line-height: normal;
 	font-family: 'Open Sans', 'Noto Sans KR', sans-serif;
 	font-size: 100%;
 	color: #0d0d0d;
 	vertical-align: baseline;
-	border: 0
+	border: 0;
+  box-sizing: border-box;
 }
 input,
 button{ padding:0; overflow:visible;
