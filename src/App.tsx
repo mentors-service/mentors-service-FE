@@ -12,8 +12,8 @@ const App = () => {
       <Route>
         <Route element={<Layout />}>
           <Route path='/' element={<Home />} />
-          <Route path='article' element={<Article />} />
-          <Route path='profile' element={<Profile />} />
+          <Route path='article/:id' element={<Article />} />
+          <Route path='profile/:id' element={<Profile />} />
 
           <Route element={<RouteWithCondition isView={isLoggedIn} />}>
             <Route path='me' element={<Me />} />
