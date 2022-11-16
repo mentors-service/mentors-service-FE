@@ -1,6 +1,7 @@
 import { ITemp } from '@@types/user';
 import { patchUserInfo } from '@api/user';
 import useAuth from '@hooks/contexts/Auth/useAuth';
+import useToast from '@hooks/contexts/Toast/useToast';
 import useUserInfo from '@hooks/contexts/UserInfo/useUserInfo';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
@@ -12,8 +13,14 @@ const Me = () => {
   const queryClient = useQueryClient();
   const { logout } = useAuth();
   const { userInfo } = useUserInfo();
+  const { toast } = useToast();
 
-  const { register, handleSubmit, reset } = useForm<ITemp>();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<ITemp>();
 
   const { mutate: userInfoMutate } = useMutation(patchUserInfo, {
     onMutate: async (data) => {
@@ -42,10 +49,8 @@ const Me = () => {
   };
 
   const onError = () => {
-    console.log('nickname null error');
+    toast({ type: 'ADD', payload: { status: 'ERROR', message: '닉네임을 입력해주세요.', time: 3000 } });
   };
-
-  console.log(userInfo);
 
   return (
     <S.MeContainer>
@@ -58,8 +63,16 @@ const Me = () => {
 
         <S.MyProfileForm onSubmit={handleSubmit(onsubmit, onError)}>
           <S.InputWrapper>
-            <MeInput register={register('nickname')} placeholder={userInfo.nickname} />
-            <MeInput register={register('description')} placeholder={userInfo.description || '나를 소개해주세요.'} />
+            <MeInput
+              register={register('nickname', { required: true })}
+              isError={Boolean(errors.nickname)}
+              placeholder={userInfo.nickname}
+            />
+            <MeInput
+              register={register('description')}
+              isError={Boolean(errors.description)}
+              placeholder={userInfo.description || '나를 소개해주세요.'}
+            />
           </S.InputWrapper>
 
           <S.MyProfileChangeButton>수정하기</S.MyProfileChangeButton>

@@ -3,14 +3,15 @@ import * as S from './Input.style';
 
 interface MeInputProps {
   register: UseFormRegisterReturn<'nickname' | 'description'>;
+  isError: boolean;
   placeholder: string;
 }
 
-const MeInput = ({ register, placeholder }: MeInputProps) => {
+const MeInput = ({ register, placeholder, isError }: MeInputProps) => {
   return (
     <S.MyProfileInputWrapper>
       <S.MyProfileInput {...register} placeholder={placeholder} />
-      <S.MyProfileInputBottom />
+      <S.MyProfileInputBottom $error={isError} />
     </S.MyProfileInputWrapper>
   );
 };
