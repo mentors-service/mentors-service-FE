@@ -3,17 +3,21 @@
     "baseUrl": "./src",
     "paths": {
       "@api/*": ["./api/*"],
-      "@components/*": ["./components/*"],
       "@assets/*": ["./assets/*"],
+      "@components/*": ["./components/*"],
+      "@lib/*": ["./lib/*"],
       "@hooks/*": ["./hooks/*"],
       "@utils/*": ["./utils/*"],
+      "@providers/*": ["./providers/*"],
       "@styles/*": ["./styles/*"],
       "@@types/*": ["./types/*"],
       "@home/*": ["./pages/home/*"],
       "@article/*": ["./pages/article/*"],
+      "@me/*": ["./pages/me/*"],
       "@profile/*": ["./pages/profile/*"],
       "@write/*": ["./pages/write/*"],
       "@layout/*": ["./pages/layout/*"],
+      "@auth/*": ["./pages/auth/*"],
       "@pages": ["./pages/index.ts"]
     }
   }

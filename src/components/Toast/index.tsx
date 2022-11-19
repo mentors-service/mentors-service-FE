@@ -1,32 +1,32 @@
-import ToastContext from '@hooks/contexts/Toast/toastContext';
-import { useReducer, useMemo } from 'react';
-import { Istate, TCase } from '@components/Toast/type';
-import List from './List';
+import styled from 'styled-components';
+import { Istate } from './type';
+import ListItem from './ListItem';
 
 interface ToastProps {
-  children: React.ReactNode;
+  list: Istate[];
 }
 
-const Toast = ({ children }: ToastProps) => {
-  const [selector, toast] = useReducer((state: Istate[], action: { type: TCase; payload: Istate }) => {
-    const type: Record<TCase, Istate[]> = {
-      ADD: [...state, { id: Date.now() + Math.random(), ...action.payload }],
-      DELETE: state.filter((item) => item.id !== action.payload.id),
-    };
-
-    return type[action.type];
-  }, []);
-
-  const contextValue = useMemo(() => ({ selector, toast }), [selector]);
+const Toast = ({ list }: ToastProps) => {
+  if (!list.length) return null;
 
   return (
-    <ToastContext.Provider value={contextValue}>
-      <Toast.List />
-      {children}
-    </ToastContext.Provider>
+    <List>
+      {list.map((item) => (
+        <ListItem key={item.id} item={item} />
+      ))}
+    </List>
   );
 };
 
-Toast.List = List;
+export const List = styled.ul`
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transform: translateX(-50%);
+`;
 
 export default Toast;

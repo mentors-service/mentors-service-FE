@@ -3,9 +3,12 @@ import Dropdown from '@components/Dropdown';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import * as S from './Home.style';
 
 const Home = () => {
+  const navigate = useNavigate();
+
   const getArticles = async ({ pageParam = 1 }) => {
     const data = await axios.get(`https://reqres.in/api/users?page=${pageParam}`).then((res) => res.data);
 
@@ -26,6 +29,10 @@ const Home = () => {
   } = useInfiniteQuery(['temp'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
 
   const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
+
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate(`article/${e.currentTarget.value}`);
+  };
 
   return (
     <S.HomeContainer>
@@ -55,7 +62,7 @@ const Home = () => {
       <S.ArticleCardList>
         {[1].map((item) => (
           <S.ArticleCardItem key={item}>
-            <S.ArticleCardButton>
+            <S.ArticleCardButton onClick={handleClick} value={item}>
               <S.ArticleCardTopWrapper>
                 <S.ArticleCardTitle>멘토링 모집</S.ArticleCardTitle>
                 <S.ArticleCardStatus>In Progress</S.ArticleCardStatus>

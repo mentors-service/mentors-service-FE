@@ -4,7 +4,7 @@ export type TCase = 'ADD' | 'DELETE';
 
 export interface Istate {
   message: string;
-  type: TStatus;
+  status: TStatus;
   id?: number;
   time?: number;
 }

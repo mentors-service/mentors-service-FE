@@ -4,18 +4,9 @@ import * as S from './Profile.style';
 
 const Profile = () => {
   const tags = [
-    {
-      tag: 'Java',
-      id: 0,
-    },
-    {
-      tag: 'React',
-      id: 1,
-    },
-    {
-      tag: 'Github',
-      id: 2,
-    },
+    { tag: 'Java', id: 0 },
+    { tag: 'React', id: 1 },
+    { tag: 'Github', id: 2 },
   ];
 
   const [articleStatus, setArticleStatus] = useState(true);

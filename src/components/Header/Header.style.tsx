@@ -7,6 +7,8 @@ export const HeaderContainer = styled.header`
   padding: 10px;
 `;
 
+export const LogoButton = styled.button``;
+
 export const LogoName = styled.h1`
   font-size: ${(props) => props.theme.fonts.$lg};
   font-weight: 700;
@@ -26,6 +28,10 @@ export const HeaderButton = styled.button`
   padding: 5px 10px;
   background-color: ${({ theme }) => theme.colors.$secondary};
   border-radius: 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
 `;
 
 export const HeaderButtonText = styled.span`

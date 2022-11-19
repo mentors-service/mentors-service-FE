@@ -22,8 +22,8 @@ const Write = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
     watch,
+    formState: { errors },
   } = useForm<TFormInput>();
 
   const { toast } = useToast();
@@ -38,7 +38,7 @@ const Write = () => {
   };
 
   const onError = () => {
-    toast({ type: 'ADD', payload: { message: '입력란을 올바르게 작성해주세요.', type: 'ERROR', time: 3000 } });
+    toast({ type: 'ADD', payload: { message: '입력란을 올바르게 작성해주세요.', status: 'ERROR', time: 3000 } });
   };
 
   const contextValue = useMemo(() => ({ markdownText, setMarkdownText }), [markdownText]);

@@ -24,7 +24,7 @@ const Article = () => {
   };
 
   const onError = () => {
-    toast({ type: 'ADD', payload: { type: 'ERROR', message: '댓글을 입력해주세요.', time: 3000 } });
+    toast({ type: 'ADD', payload: { status: 'ERROR', message: '댓글을 입력해주세요.', time: 3000 } });
   };
 
   const handleSelect = () => {

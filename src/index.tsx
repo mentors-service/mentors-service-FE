@@ -6,24 +6,31 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Toast from '@components/Toast';
+import AuthProvider from '@providers/AuthProvider';
+import ToastProvider from '@providers/ToastProvider';
+import UserInfoProvider from '@providers/UserInfoProvider';
 import App from './App';
 import { store } from './store/store';
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+
 root.render(
   <React.StrictMode>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <Toast>
-            <BrowserRouter>
-              <App />
-            </BrowserRouter>
-          </Toast>
+          <AuthProvider>
+            <UserInfoProvider>
+              <ToastProvider>
+                <BrowserRouter>
+                  <App />
+                </BrowserRouter>
+              </ToastProvider>
+            </UserInfoProvider>
+          </AuthProvider>
         </Provider>
       </QueryClientProvider>
     </ThemeProvider>
