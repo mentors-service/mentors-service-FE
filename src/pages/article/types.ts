@@ -1,7 +1,8 @@
 export interface ICommentData {
-  id: number;
-  creater: { img: string; name: string };
+  commentId: number;
+  contents: string;
   createdAt: string;
-  content: string;
+  creater: { nickname: string; discription: string };
+  modifiedAt: string;
   childs: ICommentData[];
 }

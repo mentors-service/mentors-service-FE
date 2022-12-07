@@ -1,6 +1,9 @@
+import { getArticle } from '@api/article';
 import useToast from '@hooks/contexts/Toast/useToast';
+import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'react-router-dom';
 import * as S from './Article.style';
 import ArticleButton from './components/Button';
 import CommentList from './components/CommentList';
@@ -8,10 +11,18 @@ import UserInfo from './components/UserInfo';
 
 const Article = () => {
   const [commentToggle, setCommentToggle] = useState(false);
+  const { id: articleId } = useParams();
+
+  const { data: articleInfo } = useQuery(['article'], () => getArticle(articleId!), {
+    onSuccess: () => {},
+    onError: (err) => {
+      console.log(err);
+    },
+    retry: false,
+  });
+  console.log(articleInfo);
 
   const { toast } = useToast();
-
-  const userStatusData = { creater: { img: 'val', name: 'Name' }, createdAt: '2022-11-11 22:57:00' };
 
   const { register, handleSubmit } = useForm<{ comment: string }>();
 
@@ -35,29 +46,33 @@ const Article = () => {
     setCommentToggle(false);
   };
 
+  if (!articleInfo) return null;
+
   return (
     <S.ArticleContainer>
       <S.ArticleWrapper>
         <S.ArticleTopWrapper>
-          <UserInfo creater={userStatusData.creater} createdAt={userStatusData.createdAt} />
-          <S.ArticleStatus>In Progress</S.ArticleStatus>
+          <UserInfo nickname={articleInfo.creater.nickname} createdAt={articleInfo.createdAt} />
+          <S.ArticleStatus>{articleInfo.status}</S.ArticleStatus>
         </S.ArticleTopWrapper>
 
         <S.ArticleSection>
           <S.ArticleInfoList>
             <S.ArticleInfoWrapper>
               <S.ArticleInfoTitle>제목</S.ArticleInfoTitle>
-              <S.ArticleInfoContent>멘토링 모집</S.ArticleInfoContent>
+              <S.ArticleInfoContent>{articleInfo.title}</S.ArticleInfoContent>
             </S.ArticleInfoWrapper>
 
             <S.ArticleInfoWrapper>
               <S.ArticleInfoTitle>장소</S.ArticleInfoTitle>
-              <S.ArticleInfoContent>Seoul</S.ArticleInfoContent>
+              <S.ArticleInfoContent>{articleInfo.place}</S.ArticleInfoContent>
             </S.ArticleInfoWrapper>
 
             <S.ArticleInfoWrapper>
               <S.ArticleInfoTitle>일정</S.ArticleInfoTitle>
-              <S.ArticleInfoContent>2022.10.01 ~ 2022.10.01</S.ArticleInfoContent>
+              <S.ArticleInfoContent>
+                {articleInfo.startDate} ~ {articleInfo.endDate}
+              </S.ArticleInfoContent>
             </S.ArticleInfoWrapper>
 
             <S.ArticleInfoWrapper>
@@ -69,15 +84,11 @@ const Article = () => {
           </S.ArticleInfoList>
         </S.ArticleSection>
 
-        <S.ArticleContent>
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the standard
-          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-          specimen book.
-        </S.ArticleContent>
+        <S.ArticleContent>{articleInfo.contents}</S.ArticleContent>
 
         <S.ScrapWrapper>
           <ArticleButton icon='scrap' text='스크랩' onClick={handleClick} />
-          <ArticleButton icon='apply' text='1 / 5' onClick={handleClick} />
+          <ArticleButton icon='apply' text={`${articleInfo.recruit.joinCnt} / ${5}`} onClick={handleClick} />
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 
@@ -94,7 +105,7 @@ const Article = () => {
         </S.CommentForm>
       </S.CommentFormWrapper>
 
-      <CommentList />
+      <CommentList commentList={articleInfo.comments} />
     </S.ArticleContainer>
   );
 };

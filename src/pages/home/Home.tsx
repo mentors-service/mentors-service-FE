@@ -1,24 +1,23 @@
+import { getArticles } from '@api/article';
 import { BookmarkIcon, CommentIcon, GroupIcon } from '@assets/svgs';
 import Dropdown from '@components/Dropdown';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import { dateFromNow } from '@utils/time';
 import { useNavigate } from 'react-router-dom';
 import * as S from './Home.style';
+import { IArticle } from './types';
 
 const Home = () => {
   const navigate = useNavigate();
 
-  const getArticles = async ({ pageParam = 1 }) => {
-    const data = await axios.get(`https://reqres.in/api/users?page=${pageParam}`).then((res) => res.data);
-
-    return data;
-  };
-
   const checkNextPage = (lastPage: any) => {
-    if (lastPage.page >= lastPage.total_pages) return undefined;
+    // console.log(lastPage);
+    // if (lastPage.page >= lastPage.total_pages) return undefined;
 
-    return lastPage.page + 1;
+    return Math.floor(lastPage.length / 10) + 1;
+    // return lastPage.page + 1;
+    // 보내는 요청에 현재 page 값, 전체 페이지 값 필요
   };
 
   const {
@@ -26,8 +25,9 @@ const Home = () => {
     fetchNextPage,
     isFetching,
     hasNextPage,
-  } = useInfiniteQuery(['temp'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
+  } = useInfiniteQuery(['articles'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
 
+  // console.log(data);
   const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -60,64 +60,48 @@ const Home = () => {
       </Dropdown>
 
       <S.ArticleCardList>
-        {[1].map((item) => (
-          <S.ArticleCardItem key={item}>
-            <S.ArticleCardButton onClick={handleClick} value={item}>
-              <S.ArticleCardTopWrapper>
-                <S.ArticleCardTitle>멘토링 모집</S.ArticleCardTitle>
-                <S.ArticleCardStatus>In Progress</S.ArticleCardStatus>
-              </S.ArticleCardTopWrapper>
+        {data.pages.map((page) =>
+          page.map((article: IArticle) => (
+            <S.ArticleCardItem key={article.articleId}>
+              <S.ArticleCardButton onClick={handleClick} value={article.articleId}>
+                <S.ArticleCardTopWrapper>
+                  <S.ArticleCardTitle>{article.title}</S.ArticleCardTitle>
+                  <S.ArticleCardStatus>{article.status}</S.ArticleCardStatus>
+                </S.ArticleCardTopWrapper>
 
-              <S.ArticleCardContent>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, dolore molestias culpa facilis aut
-                quam quasi quo veniam quas aperiam laboriosam itaque, dignissimos eaque provident architecto suscipit
-                eligendi, dicta mollitia!
-              </S.ArticleCardContent>
+                <S.ArticleCardContent>{article.contents}</S.ArticleCardContent>
 
-              <S.ArticleCardBottomWrapper>
-                <S.ArticleUserProfileWrapper>
-                  <S.UserImageTemp />
-                  <S.UserName>Name</S.UserName>
-                  <S.ArticleCreateAt dateTime='2022-10-29'>00 hours ago</S.ArticleCreateAt>
-                </S.ArticleUserProfileWrapper>
+                <S.ArticleCardBottomWrapper>
+                  <S.ArticleUserProfileWrapper>
+                    <S.UserImageTemp />
+                    <S.UserName>{article.creater.nickname}</S.UserName>
+                    <S.ArticleCreateAt dateTime={String(new Date(article.createdAt))}>
+                      {dateFromNow(new Date(article.createdAt))}
+                    </S.ArticleCreateAt>
+                  </S.ArticleUserProfileWrapper>
 
-                <S.ArticleInfoWrapper>
-                  <S.ArticleInfoGroup>
-                    <GroupIcon width={20} height={20} />
-                    <S.ArticleInfoText>1/5</S.ArticleInfoText>
-                  </S.ArticleInfoGroup>
+                  <S.ArticleInfoWrapper>
+                    <S.ArticleInfoGroup>
+                      <GroupIcon width={20} height={20} />
+                      <S.ArticleInfoText>{article.recruit.joinCnt}</S.ArticleInfoText>
+                    </S.ArticleInfoGroup>
 
-                  <S.ArticleInfoGroup>
-                    <CommentIcon width={20} height={20} />
-                    <S.ArticleInfoText>2</S.ArticleInfoText>
-                  </S.ArticleInfoGroup>
+                    <S.ArticleInfoGroup>
+                      <CommentIcon width={20} height={20} />
+                      <S.ArticleInfoText>{article.commentCnt}</S.ArticleInfoText>
+                    </S.ArticleInfoGroup>
 
-                  <S.ArticleInfoGroup>
-                    <BookmarkIcon width={20} height={20} />
-                    <S.ArticleInfoText>2</S.ArticleInfoText>
-                  </S.ArticleInfoGroup>
-                </S.ArticleInfoWrapper>
-              </S.ArticleCardBottomWrapper>
-            </S.ArticleCardButton>
-          </S.ArticleCardItem>
-        ))}
+                    <S.ArticleInfoGroup>
+                      <BookmarkIcon width={20} height={20} />
+                      <S.ArticleInfoText>{article.scraps.scrapCnt}</S.ArticleInfoText>
+                    </S.ArticleInfoGroup>
+                  </S.ArticleInfoWrapper>
+                </S.ArticleCardBottomWrapper>
+              </S.ArticleCardButton>
+            </S.ArticleCardItem>
+          ))
+        )}
       </S.ArticleCardList>
-
-      {data.pages.map((page) =>
-        page.data.map((item: any) => (
-          <li key={item.id}>
-            <b>{item.avatar}</b>
-            <p>{item.email}</p>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo enim, laboriosam voluptates nemo
-              dolores corporis exercitationem repudiandae rem facilis magnam quae quos molestiae delectus vel maiores
-              ea,
-            </div>
-            <span>{item.first_name}</span>
-            <span>{item.last_name}</span>
-          </li>
-        ))
-      )}
 
       <div ref={ref} />
       <div>Infinite Scroll</div>
