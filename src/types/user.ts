@@ -1,4 +1,5 @@
 export interface IuserInfo {
+  id?: number;
   nickname: string;
   description: string;
   article: unknown[];

@@ -103,8 +103,7 @@ const Home = () => {
         )}
       </S.ArticleCardList>
 
-      <div ref={ref} />
-      <div>Infinite Scroll</div>
+      <div ref={ref} style={{ height: '50px' }} />
     </S.HomeContainer>
   );
 };

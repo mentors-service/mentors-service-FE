@@ -14,7 +14,7 @@ const UserInfoProvider = ({ children }: UserInfoProviderProps) => {
   const { data: userInfo } = useQuery(['userInfo'], getUserInfo, {
     onSuccess: () => {},
     onError: (err) => {
-      console.log(err);
+      console.error(err);
       logout();
     },
     initialData: { nickname: '', description: '', article: [] },

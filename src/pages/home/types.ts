@@ -10,8 +10,8 @@ export interface IArticle {
   endDate: string | null;
   modifiedAt: string;
   place: string;
-  recruit: { isRecruited: false; joinCnt: 0; createrIdList: [] };
-  scraps: { isScraped: false; articleId: 33; scrapCnt: 0; createrIdList: [] };
+  recruit: { isRecruited: false; joinCnt: 0; createrIdList: number[] };
+  scraps: { isScraped: false; articleId: 33; scrapCnt: 0; createrIdList: number[] };
   startDate: string | null;
   status: string;
   title: string;

@@ -3,7 +3,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import ImageDnDWrapper from '@write/components/Markdown/ImageDnDWrapper';
 import MarkdownContext from '@hooks/contexts/Markdown/markdownContext';
 import { useMemo, useState } from 'react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createArticle } from '@api/article';
 import WriteInput from '@write/components/Input';
 import MarkdownEditor from '@write/components/Markdown/MarkdownEditor';
@@ -16,6 +16,7 @@ import * as S from './Write.style';
 
 const Write = () => {
   const [markdownText, setMarkdownText] = useState('');
+  const queryClient = useQueryClient();
 
   const navigate = useNavigate();
 
@@ -28,13 +29,27 @@ const Write = () => {
 
   const { toast } = useToast();
 
-  const sliderValue = watch('slider', '0');
+  const sliderValue = watch('totalMember', '0');
 
-  const createMutaion = useMutation(createArticle, { onError: (error) => {} });
+  const { mutate: articleMutate } = useMutation(createArticle, {
+    onSuccess: () => {
+      toast({
+        type: 'ADD',
+        payload: { message: '성공적으로 게시물이 생성되었습니다.', status: 'SUCCESS', time: 3000 },
+      });
+
+      navigate('/');
+    },
+    onError: (err) => {
+      console.error(err);
+    },
+  });
 
   const onSubmit: SubmitHandler<TFormInput> = (data: TFormInput) => {
-    console.log({ data, content: markdownText });
-    // createMutaion.mutate();
+    const { totalMember, schedule, ...rest } = data;
+    const [startDate, endDate] = schedule.split('~');
+
+    articleMutate({ ...rest, totalMember, startDate, endDate, contents: markdownText });
   };
 
   const onError = () => {
@@ -74,7 +89,7 @@ const Write = () => {
           <S.SliderText>인원수: {sliderValue}</S.SliderText>
 
           <S.SliderBar>
-            <S.SliderInput {...register('slider')} type='range' min={0} max={10} defaultValue={0} />
+            <S.SliderInput {...register('totalMember')} type='range' min={0} max={10} defaultValue={0} />
             <S.SliderStyleBar value={Number(sliderValue)} />
           </S.SliderBar>
         </S.SliderWrapper>
