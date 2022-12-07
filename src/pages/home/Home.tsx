@@ -1,12 +1,15 @@
-import { getArticles } from '@api/article';
-import { BookmarkIcon, CommentIcon, GroupIcon } from '@assets/svgs';
-import Dropdown from '@components/Dropdown';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import { useInfiniteQuery } from '@tanstack/react-query';
+
+import { BookmarkIcon, CommentIcon, GroupIcon } from '@assets/svgs';
+import { Dropdown } from '@components/index';
+import { getArticles } from '@api/article';
 import { dateFromNow } from '@utils/time';
+import { IArticle } from '@home/types';
+
+import { useInfiniteQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
+
 import * as S from './Home.style';
-import { IArticle } from './types';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -27,7 +30,6 @@ const Home = () => {
     hasNextPage,
   } = useInfiniteQuery(['articles'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
 
-  // console.log(data);
   const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {

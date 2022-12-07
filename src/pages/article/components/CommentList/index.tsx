@@ -1,6 +1,7 @@
+import CommentListItem from '@article/components/CommentList/CommentListItem';
 import { ICommentData } from '@article/types';
+
 import * as S from './CommentList.style';
-import CommentListItem from './CommentListItem';
 
 interface CommentListProps {
   commentList: ICommentData[];

@@ -1,6 +1,7 @@
-import useAuth from '@hooks/contexts/Auth/useAuth';
-import { useEffect } from 'react';
+import { useAuth } from '@hooks/contexts';
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const KakaoLogin = () => {
   const [searchParams] = useSearchParams();

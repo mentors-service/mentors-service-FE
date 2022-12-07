@@ -1,12 +1,11 @@
-import { ITemp } from '@@types/user';
+import { useAuth, useToast, useUserInfo } from '@hooks/contexts';
+import { MeInput, MeTab } from '@me/components';
 import { patchUserInfo } from '@api/user';
-import useAuth from '@hooks/contexts/Auth/useAuth';
-import useToast from '@hooks/contexts/Toast/useToast';
-import useUserInfo from '@hooks/contexts/UserInfo/useUserInfo';
+import { IUserInfo } from '@@types/user';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import MeInput from './components/Input';
-import MeTab from './components/tab';
+
 import * as S from './Me.style';
 
 const Me = () => {
@@ -20,7 +19,7 @@ const Me = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<ITemp>();
+  } = useForm<IUserInfo>();
 
   const { mutate: userInfoMutate } = useMutation(patchUserInfo, {
     onMutate: async (data) => {
@@ -42,10 +41,8 @@ const Me = () => {
     console.log('button');
   };
 
-  const onsubmit = (data: ITemp) => {
+  const onsubmit = (data: IUserInfo) => {
     userInfoMutate(data);
-
-    console.log('submit', data);
   };
 
   const onError = () => {

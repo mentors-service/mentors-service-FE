@@ -1,5 +1,5 @@
 import { IArticle } from '@home/types';
-import { apiInstance } from './setting';
+import { apiInstance } from '@api/setting';
 
 export const getArticles = ({ pageParam = 1 }) =>
   apiInstance.get(`articles?offset=${pageParam}`).then((res) => res.data);

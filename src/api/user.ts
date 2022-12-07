@@ -1,6 +1,6 @@
-import { ITemp, IuserInfo } from '@@types/user';
-import { apiInstance } from './setting';
+import { IUserInfo } from '@@types/user';
+import { apiInstance } from '@api/setting';
 
-export const getUserInfo = (): Promise<IuserInfo> => apiInstance.get('users').then((res) => res.data);
+export const getUserInfo = (): Promise<IUserInfo> => apiInstance.get('users').then((res) => res.data);
 
-export const patchUserInfo = (data: ITemp): Promise<any> => apiInstance.patch('users', data);
+export const patchUserInfo = (data: IUserInfo): Promise<IUserInfo> => apiInstance.patch('users', data);

@@ -1,8 +1,8 @@
-import useAuth from '@hooks/contexts/Auth/useAuth';
-import useToast from '@hooks/contexts/Toast/useToast';
 import { Article, Home, KakaoLogin, Layout, Me, Profile, Write } from '@pages';
-import { useEffect } from 'react';
+import { useAuth, useToast } from '@hooks/contexts';
+
 import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const App = () => {
   const { isLoggedIn } = useAuth();

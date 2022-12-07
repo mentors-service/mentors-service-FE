@@ -1,9 +1,11 @@
-import React, { useMemo, useState } from 'react';
 import DropdownContext from '@hooks/contexts/Dropdown/dropdownContext';
 import Button from '@components/Dropdown/Button';
 import Text from '@components/Dropdown/Text';
 import Icon from '@components/Dropdown/Icon';
 import List from '@components/Dropdown/List';
+
+import { useMemo, useState } from 'react';
+
 import styled from 'styled-components';
 
 interface DropdownProps {

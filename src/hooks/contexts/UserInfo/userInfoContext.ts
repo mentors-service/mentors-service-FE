@@ -1,8 +1,8 @@
-import { IuserInfo } from '@@types/user';
+import { IUserInfo } from '@@types/user';
 import { createContext } from 'react';
 
 interface defaultContext {
-  userInfo: IuserInfo;
+  userInfo: IUserInfo;
 }
 
 export default createContext<defaultContext | null>(null);

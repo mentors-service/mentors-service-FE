@@ -1,7 +1,9 @@
-import UserInfo from '@article/components/UserInfo';
+import { UserInfo } from '@article/components';
 import { ICommentData } from '@article/types';
 import { CommentIcon } from '@assets/svgs';
+
 import { Fragment } from 'react';
+
 import * as S from './CommentListItem.style';
 
 const CommentListItem = ({ creater, createdAt, contents, childs }: ICommentData) => {

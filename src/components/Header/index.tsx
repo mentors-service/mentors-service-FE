@@ -1,5 +1,6 @@
 import { LogoutIcon, ProfileIcon } from '@assets/svgs';
-import useAuth from '@hooks/contexts/Auth/useAuth';
+import { useAuth } from '@hooks/contexts';
+
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import * as S from './Header.style';

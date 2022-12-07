@@ -1,5 +1,7 @@
 import { BookmarkIcon, CommentIcon, GroupIcon, ProfileImgIcon } from '@assets/svgs';
+
 import { useState } from 'react';
+
 import * as S from './Profile.style';
 
 const Profile = () => {

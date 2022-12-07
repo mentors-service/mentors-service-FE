@@ -1,4 +1,5 @@
 import { useState } from 'react';
+
 import * as S from './tab.style';
 
 const MYACTIVITY_LIST = ['Article', 'Comment', 'Scrap'];

@@ -1,4 +1,5 @@
 import AuthContext from '@hooks/contexts/Auth/authContext';
+
 import { useState, useMemo } from 'react';
 
 interface AuthProviderProps {

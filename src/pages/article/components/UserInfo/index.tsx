@@ -1,4 +1,5 @@
 import { dateFromNow } from '@utils/time';
+
 import * as S from './UserInfo.style';
 
 interface UserInfoProps {

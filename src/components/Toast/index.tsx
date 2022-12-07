@@ -1,6 +1,7 @@
+import { Istate } from '@components/Toast/type';
+import ListItem from '@components/Toast/ListItem';
+
 import styled from 'styled-components';
-import { Istate } from './type';
-import ListItem from './ListItem';
 
 interface ToastProps {
   list: Istate[];

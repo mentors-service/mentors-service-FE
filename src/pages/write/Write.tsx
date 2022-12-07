@@ -1,22 +1,20 @@
-import { useNavigate } from 'react-router-dom';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import ImageDnDWrapper from '@write/components/Markdown/ImageDnDWrapper';
 import MarkdownContext from '@hooks/contexts/Markdown/markdownContext';
-import { useMemo, useState } from 'react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { createArticle } from '@api/article';
-import WriteInput from '@write/components/Input';
-import MarkdownEditor from '@write/components/Markdown/MarkdownEditor';
-import ImageUpload from '@write/components/Markdown/ImageUpload';
-import Result from '@write/components/Markdown/Result';
+
+import { WriteInput, ImageDnDWrapper, ImageUpload, MarkdownEditor, Result } from '@write/components';
 import { numberCheck } from '@utils/formUtil';
-import useToast from '@hooks/contexts/Toast/useToast';
-import { TFormInput } from './types';
+import { useToast } from '@hooks/contexts';
+import { TFormInput } from '@write/types';
+import { createArticle } from '@api/article';
+
+import { useForm, SubmitHandler } from 'react-hook-form';
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+
 import * as S from './Write.style';
 
 const Write = () => {
   const [markdownText, setMarkdownText] = useState('');
-  const queryClient = useQueryClient();
 
   const navigate = useNavigate();
 
@@ -41,7 +39,7 @@ const Write = () => {
       navigate('/');
     },
     onError: (err) => {
-      console.error(err);
+      toast({ type: 'ADD', payload: { status: 'ERROR', message: '게시물 생성 에러' } });
     },
   });
 
