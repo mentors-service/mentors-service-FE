@@ -14,13 +14,10 @@ import * as S from './Home.style';
 const Home = () => {
   const navigate = useNavigate();
 
-  const checkNextPage = (lastPage: any) => {
-    // console.log(lastPage);
-    // if (lastPage.page >= lastPage.total_pages) return undefined;
+  const checkNextPage = (lastPage: { currentPage: number; totalPages: number; data: [] }) => {
+    if (lastPage.currentPage >= lastPage.totalPages) return undefined;
 
-    return Math.floor(lastPage.length / 10) + 1;
-    // return lastPage.page + 1;
-    // 보내는 요청에 현재 page 값, 전체 페이지 값 필요
+    return lastPage.currentPage + 1;
   };
 
   const {
@@ -28,7 +25,10 @@ const Home = () => {
     fetchNextPage,
     isFetching,
     hasNextPage,
-  } = useInfiniteQuery(['articles'], getArticles, { getNextPageParam: checkNextPage, staleTime: Infinity });
+  } = useInfiniteQuery(['articles'], getArticles, {
+    getNextPageParam: checkNextPage,
+    staleTime: Infinity,
+  });
 
   const ref = useIntersectionObserver(fetchNextPage, Boolean(hasNextPage && !isFetching));
 
@@ -46,12 +46,6 @@ const Home = () => {
         <S.SearchContent>검색 내용</S.SearchContent>
       </S.SearchWrapper>
 
-      <S.TagList>
-        {[1, 2, 3, 4, 5].map((item) => (
-          <S.TagItem key={item}>Git</S.TagItem>
-        ))}
-      </S.TagList>
-
       <Dropdown>
         <Dropdown.Button>
           <Dropdown.Text />
@@ -63,7 +57,7 @@ const Home = () => {
 
       <S.ArticleCardList>
         {data.pages.map((page) =>
-          page.map((article: IArticle) => (
+          page.data.map((article: IArticle) => (
             <S.ArticleCardItem key={article.articleId}>
               <S.ArticleCardButton onClick={handleClick} value={article.articleId}>
                 <S.ArticleCardTopWrapper>
@@ -85,7 +79,7 @@ const Home = () => {
                   <S.ArticleInfoWrapper>
                     <S.ArticleInfoGroup>
                       <GroupIcon width={20} height={20} />
-                      <S.ArticleInfoText>{article.recruit.joinCnt}</S.ArticleInfoText>
+                      <S.ArticleInfoText>{`${article.recruit.joinCnt} / ${article.totalRecruit}`}</S.ArticleInfoText>
                     </S.ArticleInfoGroup>
 
                     <S.ArticleInfoGroup>

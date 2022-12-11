@@ -33,13 +33,14 @@ const Article = () => {
 
       queryClient.setQueryData<IArticle>(['article', articleId], (prev) => {
         if (!prev) return undefined;
-        // 4 -> userInfo.id
-        if (prev.scraps.createrIdList.includes(4)) {
-          const index = prev.scraps.createrIdList.findIndex((item) => item === 4);
+        if (!userInfo.id) return undefined;
+
+        if (prev.scraps.createrIdList.includes(userInfo.id)) {
+          const index = prev.scraps.createrIdList.findIndex((item) => item === userInfo.id);
           prev.scraps.createrIdList.splice(index, 1);
           toast({ type: 'ADD', payload: { status: 'INFO', message: '스크랩 취소!', time: 3000 } });
         } else {
-          prev.scraps.createrIdList.push(4);
+          prev.scraps.createrIdList.push(userInfo.id);
           toast({ type: 'ADD', payload: { status: 'INFO', message: '스크랩 성공!', time: 3000 } });
         }
 
@@ -53,6 +54,7 @@ const Article = () => {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['article', articleId] });
+      queryClient.invalidateQueries({ queryKey: ['articles'] });
     },
   });
 
@@ -63,14 +65,15 @@ const Article = () => {
 
       queryClient.setQueryData<IArticle>(['article', articleId], (prev) => {
         if (!prev) return undefined;
-        // 4 -> userInfo.id
-        if (prev.recruit.createrIdList.includes(4)) {
-          const index = prev.recruit.createrIdList.findIndex((item) => item === 4);
+        if (!userInfo.id) return undefined;
+
+        if (prev.recruit.createrIdList.includes(userInfo.id)) {
+          const index = prev.recruit.createrIdList.findIndex((item) => item === userInfo.id);
           prev.recruit.createrIdList.splice(index, 1);
           prev.recruit.joinCnt -= 1;
           toast({ type: 'ADD', payload: { status: 'INFO', message: '신청 취소!', time: 3000 } });
         } else {
-          prev.recruit.createrIdList.push(4);
+          prev.recruit.createrIdList.push(userInfo.id);
           prev.recruit.joinCnt += 1;
           toast({ type: 'ADD', payload: { status: 'INFO', message: '신청 성공!', time: 3000 } });
         }
@@ -85,6 +88,7 @@ const Article = () => {
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['article', articleId] });
+      queryClient.invalidateQueries({ queryKey: ['articles'] });
     },
   });
 
@@ -93,14 +97,15 @@ const Article = () => {
       queryClient.invalidateQueries(['article', articleId]);
       reset();
     },
+    onError: () => {
+      toast({ type: 'ADD', payload: { status: 'ERROR', message: '댓글 작성 에러' } });
+    },
     onSettled: () => {
       setTimeout(() => {
         if (!scrollRef.current) return;
         scrollRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
       }, 500);
-    },
-    onError: () => {
-      toast({ type: 'ADD', payload: { status: 'ERROR', message: '댓글 작성 에러' } });
+      queryClient.invalidateQueries({ queryKey: ['articles'] });
     },
   });
 
@@ -113,7 +118,7 @@ const Article = () => {
       <S.ArticleWrapper>
         <S.ArticleTopWrapper>
           <UserInfo nickname={articleInfo.creater.nickname} createdAt={articleInfo.createdAt} />
-          <S.ArticleStatus>{articleInfo.status}</S.ArticleStatus>
+          <S.ArticleStatus>{articleInfo.status.split('_')[1]}</S.ArticleStatus>
         </S.ArticleTopWrapper>
 
         <S.ArticleSection>
@@ -129,15 +134,14 @@ const Article = () => {
         <S.ArticleContent>{articleInfo.contents}</S.ArticleContent>
 
         <S.ScrapWrapper>
-          <ArticleButton icon='scrap' text='스크랩' mutate={scrapMutate} isToggle={!articleInfo.scraps.isScraped} />
-          {/* isToggle={articleInfo.scraps.createrIdList.includes(userInfo.id!) || !articleInfo.scraps.isScraped} */}
+          <ArticleButton icon='scrap' text='스크랩' mutate={scrapMutate} isToggle={articleInfo.scraps.isScraped} />
           <ArticleButton
             icon='apply'
-            text={`${articleInfo.recruit.joinCnt} / ${5}`}
+            text={`${articleInfo.recruit.joinCnt} / ${articleInfo.totalRecruit}`}
             mutate={recruitMutate}
-            isToggle={!articleInfo.recruit.isRecruited}
+            isToggle={articleInfo.recruit.isRecruited}
+            // {articleInfo.recruit.joinCnt >= articleInfo.totalRecruit} 유저 신청 유무도 확인해야함
           />
-          {/* isToggle={articleInfo.recruit.createrIdList.includes(userInfo.id!) || !articleInfo.recruit.isRecruited} */}
         </S.ScrapWrapper>
       </S.ArticleWrapper>
 

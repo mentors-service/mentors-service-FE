@@ -15,4 +15,5 @@ export interface IArticle {
   startDate: string | null;
   status: string;
   title: string;
+  totalRecruit: number;
 }

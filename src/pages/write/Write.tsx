@@ -27,7 +27,7 @@ const Write = () => {
 
   const { toast } = useToast();
 
-  const sliderValue = watch('totalMember', '0');
+  const sliderValue = watch('totalRecruit', '0');
 
   const { mutate: articleMutate } = useMutation(createArticle, {
     onSuccess: () => {
@@ -38,16 +38,16 @@ const Write = () => {
 
       navigate('/');
     },
-    onError: (err) => {
+    onError: () => {
       toast({ type: 'ADD', payload: { status: 'ERROR', message: '게시물 생성 에러' } });
     },
   });
 
   const onSubmit: SubmitHandler<TFormInput> = (data: TFormInput) => {
-    const { totalMember, schedule, ...rest } = data;
+    const { totalRecruit, schedule, ...rest } = data;
     const [startDate, endDate] = schedule.split('~');
 
-    articleMutate({ ...rest, totalMember, startDate, endDate, contents: markdownText });
+    articleMutate({ ...rest, totalRecruit, startDate, endDate, contents: markdownText });
   };
 
   const onError = () => {
@@ -87,7 +87,7 @@ const Write = () => {
           <S.SliderText>인원수: {sliderValue}</S.SliderText>
 
           <S.SliderBar>
-            <S.SliderInput {...register('totalMember')} type='range' min={0} max={10} defaultValue={0} />
+            <S.SliderInput {...register('totalRecruit')} type='range' min={0} max={10} defaultValue={0} />
             <S.SliderStyleBar value={Number(sliderValue)} />
           </S.SliderBar>
         </S.SliderWrapper>

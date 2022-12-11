@@ -24,6 +24,7 @@ export const ArticleTopWrapper = styled.header`
 export const ArticleStatus = styled.div`
   padding: 5px 10px;
   background: ${({ theme }) => theme.colors.$secondary};
+  color: ${({ theme }) => theme.colors.$white};
   border-radius: 10px;
 `;
 
