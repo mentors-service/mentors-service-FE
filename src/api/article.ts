@@ -2,10 +2,10 @@ import { IArticle } from '@home/types';
 import { apiInstance } from '@api/setting';
 
 export const getArticles = ({ pageParam = 1 }) =>
-  apiInstance.get(`articles?offset=${pageParam}`).then((res) => res.data);
+  apiInstance.get(`articles/list?offset=${pageParam}`).then((res) => res.data);
 
 export const getArticle = (articleId: string): Promise<IArticle> =>
-  apiInstance.get(`articles/${articleId}`).then((res) => res.data);
+  apiInstance.get(`articles/detail/${articleId}`).then((res) => res.data);
 
 export const createArticle = (data: any): Promise<any> => apiInstance.post('articles', data);
 

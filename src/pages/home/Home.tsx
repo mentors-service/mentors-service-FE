@@ -36,6 +36,11 @@ const Home = () => {
     navigate(`article/${e.currentTarget.value}`);
   };
 
+  const handleClickWrite = () => {
+    navigate('/write');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <S.HomeContainer>
       <S.SearchWrapper>
@@ -98,6 +103,9 @@ const Home = () => {
           ))
         )}
       </S.ArticleCardList>
+      <S.WriteButtonWrpper onClick={handleClickWrite}>
+        <span>Write</span>
+      </S.WriteButtonWrpper>
 
       <div ref={ref} style={{ height: '50px' }} />
     </S.HomeContainer>

@@ -1,11 +1,12 @@
-import { useState } from 'react';
-
 import * as S from './tab.style';
 
-const MYACTIVITY_LIST = ['Article', 'Comment', 'Scrap'];
+interface Props {
+  setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
+  currentTab: string;
+}
 
-const MeTab = () => {
-  const [currentTab, setCurrentTab] = useState<string>('');
+const MeTab = ({ setCurrentTab, currentTab }: Props) => {
+  const MYACTIVITY_LIST = ['Article', 'Comment', 'Scrap'];
 
   const handleClickButton = (e: React.MouseEvent<HTMLButtonElement>) => {
     setCurrentTab(e.currentTarget.innerText);

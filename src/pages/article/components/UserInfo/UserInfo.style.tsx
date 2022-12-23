@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UserInfoWrapper = styled.div`
+export const UserInfoWrapper = styled.button`
   display: flex;
   gap: 5px;
   align-items: center;

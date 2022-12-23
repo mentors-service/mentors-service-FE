@@ -159,3 +159,26 @@ export const ArticleInfoGroup = styled.div`
 `;
 
 export const ArticleInfoText = styled.span``;
+
+export const WriteButtonWrpper = styled.button`
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 10;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background-color: ${({ theme }) => theme.colors.$secondary};
+  border-radius: 20px;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.$secondary_dark};
+  }
+
+  span {
+    color: ${({ theme }) => theme.colors.$white};
+  }
+`;

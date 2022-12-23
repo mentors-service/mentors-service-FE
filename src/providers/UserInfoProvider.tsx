@@ -19,6 +19,7 @@ const UserInfoProvider = ({ children }: UserInfoProviderProps) => {
     },
     initialData: { nickname: '', description: '', article: [] },
     retry: false,
+    enabled: !!localStorage.getItem('token'),
   });
 
   const contextValue = useMemo(() => ({ userInfo }), [userInfo]);

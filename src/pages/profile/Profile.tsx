@@ -1,70 +1,70 @@
-import { BookmarkIcon, CommentIcon, GroupIcon, ProfileImgIcon } from '@assets/svgs';
-
-import { useState } from 'react';
+import { getProfileInfo } from '@api/user';
+import { BookmarkIcon, CommentIcon, GroupIcon } from '@assets/svgs';
+import { useToast } from '@hooks/contexts';
+import { useQuery } from '@tanstack/react-query';
+import { useNavigate, useParams } from 'react-router-dom';
+import { IArticle } from '@home/types';
 
 import * as S from './Profile.style';
 
 const Profile = () => {
-  const tags = [
-    { tag: 'Java', id: 0 },
-    { tag: 'React', id: 1 },
-    { tag: 'Github', id: 2 },
-  ];
+  const { id: userId } = useParams();
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  const [articleStatus, setArticleStatus] = useState(true);
+  const { data: profileInfo } = useQuery(['profile', userId], () => getProfileInfo(userId!), {
+    onError: () => {
+      toast({ type: 'ADD', payload: { status: 'ERROR', message: '게시물 에러' } });
+    },
+  });
+
+  const handleClickCard = () => {
+    navigate(`/article/${userId}`);
+  };
+
+  if (!profileInfo) return null;
 
   return (
     <S.ProfileWrapper>
       <S.Profile>
-        <ProfileImgIcon width='100' height='100' />
+        <S.ImageTemp />
 
         <S.ProfileInfo>
-          <S.Name>이무성</S.Name>
-          <S.Description>저는 5년차 개발자입니다. 주로 react 개발을 위주로 하는 중 입니다.</S.Description>
+          <S.Name>{profileInfo.user.nickname}</S.Name>
+          <S.Description>{profileInfo.user.description}</S.Description>
         </S.ProfileInfo>
       </S.Profile>
-
-      <S.MentorSkills>
-        <S.Label>Skills</S.Label>
-        {tags.map((tag) => {
-          return (
-            <S.SkillsWrapper key={tag.id}>
-              <span>{tag.tag}</span>
-            </S.SkillsWrapper>
-          );
-        })}
-      </S.MentorSkills>
 
       <S.MyPost>
         <p>게시글</p>
         <S.ArticleCardList>
-          {[1, 2, 3].map((item) => (
-            <S.ArticleCardItem key={item}>
-              <S.ArticleCardButton>
+          {profileInfo.articles.data.map((item: IArticle) => (
+            <S.ArticleCardItem key={item.articleId}>
+              <S.ArticleCardButton onClick={handleClickCard} value={item.articleId}>
                 <S.ArticleCardTopWrapper>
-                  <S.ArticleCardTitle>멘토링 모집</S.ArticleCardTitle>
-                  {articleStatus ? (
-                    <S.ArticleCardStatus articleStatus={articleStatus}>In Progress</S.ArticleCardStatus>
-                  ) : (
-                    <S.ArticleCardStatus articleStatus={articleStatus}>Completed</S.ArticleCardStatus>
-                  )}
+                  <S.ArticleCardTitle>{item.title}</S.ArticleCardTitle>
+                  <S.ArticleCardStatus articleStatus={Boolean(item.status === 'ARTICLE_INPROGRESS')}>
+                    {item.status}
+                  </S.ArticleCardStatus>
                 </S.ArticleCardTopWrapper>
 
                 <S.ArticleCardBottomWrapper>
                   <S.ArticleInfoWrapper>
                     <S.ArticleInfoGroup>
                       <GroupIcon width={20} height={20} />
-                      <S.ArticleInfoText>1/5</S.ArticleInfoText>
+                      <S.ArticleInfoText>
+                        {item.recruit.joinCnt}/{item.totalRecruit}
+                      </S.ArticleInfoText>
                     </S.ArticleInfoGroup>
 
                     <S.ArticleInfoGroup>
                       <CommentIcon width={20} height={20} />
-                      <S.ArticleInfoText>2</S.ArticleInfoText>
+                      <S.ArticleInfoText>{item.commentCnt}</S.ArticleInfoText>
                     </S.ArticleInfoGroup>
 
                     <S.ArticleInfoGroup>
                       <BookmarkIcon width={20} height={20} />
-                      <S.ArticleInfoText>2</S.ArticleInfoText>
+                      <S.ArticleInfoText>{item.scraps.scrapCnt}</S.ArticleInfoText>
                     </S.ArticleInfoGroup>
                   </S.ArticleInfoWrapper>
                 </S.ArticleCardBottomWrapper>

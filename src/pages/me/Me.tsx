@@ -1,18 +1,24 @@
 import { useAuth, useToast, useUserInfo } from '@hooks/contexts';
 import { MeInput, MeTab } from '@me/components';
 import { patchUserInfo } from '@api/user';
+import { useState } from 'react';
 import { IUserInfo } from '@@types/user';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 
+import { dateFromNow } from '@utils/time';
+import { useNavigate } from 'react-router-dom';
 import * as S from './Me.style';
 
 const Me = () => {
+  const [currentTab, setCurrentTab] = useState<string>('Article');
+
   const queryClient = useQueryClient();
   const { logout } = useAuth();
   const { userInfo } = useUserInfo();
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -37,9 +43,7 @@ const Me = () => {
     },
   });
 
-  const handleClick = () => {
-    console.log('button');
-  };
+  const handleClick = () => {};
 
   const onsubmit = (data: IUserInfo) => {
     userInfoMutate(data);
@@ -47,6 +51,12 @@ const Me = () => {
 
   const onError = () => {
     toast({ type: 'ADD', payload: { status: 'ERROR', message: '닉네임을 입력해주세요.', time: 3000 } });
+  };
+
+  const handleClickCard = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (e.currentTarget.value === undefined) return;
+
+    navigate(`/article/${e.currentTarget.value}`);
   };
 
   return (
@@ -77,18 +87,44 @@ const Me = () => {
       </S.MyProfileWrapper>
 
       <S.MyActivityWrapper>
-        <MeTab />
+        <MeTab setCurrentTab={setCurrentTab} currentTab={currentTab} />
 
         <S.MyActivityList>
-          {[1, 2, 3, 4, 5].map((item) => (
-            <S.MyActivityItem key={item}>
-              <S.MyActivityButton onClick={handleClick}>
-                <S.MyActivityTitle>게시물 제목</S.MyActivityTitle>
-                <S.MyActivityContent>내용...</S.MyActivityContent>
-                <S.MyActivityCreatedAt dateTime='2022-10-26'>2022-10-26</S.MyActivityCreatedAt>
-              </S.MyActivityButton>
-            </S.MyActivityItem>
-          ))}
+          {currentTab === 'Article' &&
+            userInfo?.articles?.data?.map((item: any) => (
+              <S.MyActivityItem key={item.articleId}>
+                <S.MyActivityButton onClick={handleClickCard} value={item.articleId}>
+                  <S.MyActivityTitle>{item.title}</S.MyActivityTitle>
+                  <S.MyActivityContent>{item.contents}</S.MyActivityContent>
+                  <S.MyActivityCreatedAt dateTime={String(new Date(item.createdAt))}>
+                    {dateFromNow(new Date(item.createdAt))}
+                  </S.MyActivityCreatedAt>
+                </S.MyActivityButton>
+              </S.MyActivityItem>
+            ))}
+          {currentTab === 'Comment' &&
+            userInfo?.comments?.map((item: any) => (
+              <S.MyActivityItem key={item.commentId}>
+                <S.MyActivityButton onClick={handleClickCard}>
+                  <S.MyActivityTitle>{item.contents}</S.MyActivityTitle>
+                  <S.MyActivityCreatedAt dateTime={String(new Date(item.createdAt))}>
+                    {dateFromNow(new Date(item.createdAt))}
+                  </S.MyActivityCreatedAt>
+                </S.MyActivityButton>
+              </S.MyActivityItem>
+            ))}
+          {currentTab === 'Scrap' &&
+            userInfo?.scraps?.map((item: any) => (
+              <S.MyActivityItem key={item.articleId}>
+                <S.MyActivityButton onClick={handleClickCard} value={item.articleId}>
+                  <S.MyActivityTitle>{item.title}</S.MyActivityTitle>
+                  <S.MyActivityContent>{item.contents}</S.MyActivityContent>
+                  <S.MyActivityCreatedAt dateTime={String(new Date(item.createdAt))}>
+                    {dateFromNow(new Date(item.createdAt))}
+                  </S.MyActivityCreatedAt>
+                </S.MyActivityButton>
+              </S.MyActivityItem>
+            ))}
         </S.MyActivityList>
       </S.MyActivityWrapper>
     </S.MeContainer>

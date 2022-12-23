@@ -12,11 +12,8 @@ import * as S from './Article.style';
 
 const Article = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-
   const queryClient = useQueryClient();
-
   const { id: articleId } = useParams();
-
   const { userInfo } = useUserInfo();
   const { toast } = useToast();
 
@@ -49,8 +46,8 @@ const Article = () => {
 
       return { previousArticle };
     },
-    onError: (_1, _2, context) => {
-      queryClient.setQueriesData(['article', articleId], context?.previousArticle);
+    onError: () => {
+      toast({ type: 'ADD', payload: { status: 'ERROR', message: '신청 에러', time: 3000 } });
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['article', articleId] });
@@ -84,7 +81,7 @@ const Article = () => {
       return { previousArticle };
     },
     onError: () => {
-      toast({ type: 'ADD', payload: { status: 'ERROR', message: '신청 에러' } });
+      toast({ type: 'ADD', payload: { status: 'ERROR', message: '신청 에러', time: 3000 } });
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['article', articleId] });
@@ -117,7 +114,11 @@ const Article = () => {
     <S.ArticleContainer>
       <S.ArticleWrapper>
         <S.ArticleTopWrapper>
-          <UserInfo nickname={articleInfo.creater.nickname} createdAt={articleInfo.createdAt} />
+          <UserInfo
+            nickname={articleInfo.creater.nickname}
+            createdAt={articleInfo.createdAt}
+            userId={articleInfo.creater.id}
+          />
           <S.ArticleStatus>{articleInfo.status.split('_')[1]}</S.ArticleStatus>
         </S.ArticleTopWrapper>
 
@@ -132,7 +133,6 @@ const Article = () => {
         </S.ArticleSection>
 
         <S.ArticleContent>{articleInfo.contents}</S.ArticleContent>
-
         <S.ScrapWrapper>
           <ArticleButton icon='scrap' text='스크랩' mutate={scrapMutate} isToggle={articleInfo.scraps.isScraped} />
           <ArticleButton
@@ -140,14 +140,11 @@ const Article = () => {
             text={`${articleInfo.recruit.joinCnt} / ${articleInfo.totalRecruit}`}
             mutate={recruitMutate}
             isToggle={articleInfo.recruit.isRecruited}
-            // {articleInfo.recruit.joinCnt >= articleInfo.totalRecruit} 유저 신청 유무도 확인해야함
           />
         </S.ScrapWrapper>
       </S.ArticleWrapper>
-
       <CommentForm handleSubmit={handleSubmit} register={register} commentMutate={commentMutate} />
       <CommentList commentList={articleInfo.comments} />
-
       <div ref={scrollRef} />
     </S.ArticleContainer>
   );

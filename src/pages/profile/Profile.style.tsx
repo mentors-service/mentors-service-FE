@@ -11,6 +11,13 @@ export const Profile = styled.div`
   align-items: center;
 `;
 
+export const ImageTemp = styled.div`
+  width: 100px;
+  height: 100px;
+  background-color: ${({ theme }) => theme.colors.$gray};
+  border-radius: 100%;
+`;
+
 export const ProfileInfo = styled.div`
   margin-top: 25px;
 `;
@@ -22,24 +29,6 @@ export const Name = styled.span`
 export const Description = styled.div`
   width: 175px;
   margin-top: 25px;
-`;
-
-export const MentorSkills = styled.div`
-  display: flex;
-  gap: 30px;
-  align-items: center;
-  width: 100%;
-  margin-top: 50px;
-`;
-
-export const Label = styled.label`
-  font-size: ${({ theme }) => theme.fonts.$lg};
-`;
-
-export const SkillsWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
 `;
 
 export const MyPost = styled.section`
@@ -86,7 +75,6 @@ export const ArticleCardTitle = styled.h2`
 
 export const ArticleCardStatus = styled.div<{ articleStatus: boolean }>`
   padding: 5px 10px;
-  background: #ebebeb;
   background-color: ${({ articleStatus, theme }) => (articleStatus ? theme.colors.$secondary : theme.colors.$gray)};
   border-radius: 10px;
 `;

@@ -6,7 +6,7 @@ export interface IArticle {
   comments: ICommentData[];
   contents: string;
   createdAt: string;
-  creater: { nickname: string; discription: string };
+  creater: { id: number; nickname: string; discription: string };
   endDate: string | null;
   modifiedAt: string;
   place: string;
