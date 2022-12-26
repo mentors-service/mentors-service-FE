@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 const App = () => {
   const { isLoggedIn } = useAuth();
 
-  console.log(process.env.REACT_APP_TEST);
   return (
     <Routes>
       <Route>
