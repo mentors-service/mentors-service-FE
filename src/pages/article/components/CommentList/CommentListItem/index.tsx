@@ -11,7 +11,7 @@ const CommentListItem = ({ creater, createdAt, contents, childs }: ICommentData)
     <S.CommentsWrapper>
       <S.Comment>
         <S.CommentTopWrapper>
-          <UserInfo nickname={creater?.nickname ?? '탈퇴한 회원'} createdAt={createdAt} userId={creater?.id} />
+          <UserInfo nickname={creater?.nickname ?? '회원'} createdAt={createdAt} userId={creater?.id} />
           <S.ReplyCommentButton>
             <CommentIcon width={20} height={20} />
           </S.ReplyCommentButton>
@@ -26,7 +26,7 @@ const CommentListItem = ({ creater, createdAt, contents, childs }: ICommentData)
             <Fragment key={child.commentId}>
               <S.CommentTopWrapper>
                 <UserInfo
-                  nickname={child.creater?.nickname ?? '탈퇴한 회원'}
+                  nickname={child.creater?.nickname ?? '회원'}
                   createdAt={child.createdAt}
                   userId={child.creater?.id}
                 />
