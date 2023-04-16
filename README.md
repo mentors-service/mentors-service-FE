@@ -22,13 +22,23 @@ REACT_APP_BASE_URL=백엔드 API 주소
 REACT_APP_KAKAO_OAUTH_URL=백엔드 카카오 OAuth 주소
 ```
 
-## 💻 Web Languages / Libraries
+# 🖥️ 프로젝트 구현 영상
+![촬영](https://user-images.githubusercontent.com/79708688/232276899-149bf086-2573-418d-a906-d5137abb95a1.gif)
+
+
+<br>
+<br>
+
+# 🛠️ 사용 기술
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-004088.svg?style=for-the-badge&logo=typescript&logoColor=white) ![ReactQuery](https://img.shields.io/badge/React%20Query-FF4154.svg?style=for-the-badge&logo=reactquery&logoColor=white)
 
 ![ReactRouterDom](https://img.shields.io/badge/React%20Router%20DOM-4A154B.svg?style=for-the-badge&logo=react&logoColor=white)
 
 ![StyledComponents](https://img.shields.io/badge/Styled%20Components-DB7093.svg?style=for-the-badge&logo=styled-components&logoColor=white)
+
+<br>
+<br>
 
 # 🗂️ 프로젝트 구조
 
